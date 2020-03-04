@@ -126,7 +126,7 @@ class Contactos_model extends CI_Model {
         'descricao_cliente' => $this->input->post('descricao_cliente'),
         'categoria_cliente' => $this->input->post('categoria_cliente'),
         'visivel_cliente' => $this->input->post('visivel_cliente'),        
-        'utilizador_cliente' => $this->input->post('utilizador_cliente'),    
+        'utilizador_cliente' => $this->input->post('utilizador_cliente'),
         'criado_cliente' => $this->input->post('criado_cliente'),            
         'modificado_cliente' => $this->input->post('modificado_cliente')
         );
