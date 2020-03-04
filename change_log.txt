@@ -1,0 +1,93 @@
+
+
+
+
+21/02/2018
+|__________
+|---------------------------------------------------------
+|Created Homepage graphic for 2018 Services
+|---------------------------------------------------------
+
+
+22/12/2017
+|__________
+|---------------------------------------------------------
+|Administrative services user for ID >= 7
+|Administrative users for ID >= 5
+|---------------------------------------------------------
+
+
+19/12/2017
+|__________
+|---------------------------------------------------------
+|Configuration options for HomePage Services Graphic   
+|   max: 200,
+|   min: 0,
+|   stepSize: 20
+|---------------------------------------------------------
+|Config $config["per_page"] = ''; to allow more than 12 
+|records per page
+|---------------------------------------------------------
+|---------------------------------------------------------
+|
+|25/10/2017
+|__________
+|---------------------------------------------------------
+|Administrative user for ID >= 5
+|---------------------------------------------------------
+|Homepage Grafic Total Servicos
+|add SELECT COUNT(categoria_servicos) for date
+|---------------------------------------------------------
+|Added Hide form fiel for User ID
+|Added Hide form fiels to funcionarios table
+|---------------------------------------------------------
+|
+|22/09/2017
+|__________
+|---------------------------------------------------------
+|Administrative user for ID >= 5
+|---------------------------------------------------------
+|Homepage Grafic Total Servicos
+|add SELECT COUNT(categoria_servicos) for date
+|---------------------------------------------------------
+|Added Hide form fiel for User ID
+|Added Hide form fiels to funcionarios table
+|---------------------------------------------------------
+|
+|21/09/2017
+|__________
+|---------------------------------------------------------
+|Create 2 Administrative Users
+|---------------------------------------------------------
+|http://perolaparalela.pt/gestao/index.php/users/registration/
+|On Controller\Users function registration()
+|Form Validation commented and add redirect to users/login
+|---------------------------------------------------------
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
