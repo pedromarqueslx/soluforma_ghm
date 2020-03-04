@@ -130,6 +130,7 @@ class Contactos_model extends CI_Model {
         'criado_cliente' => $this->input->post('criado_cliente'),            
         'modificado_cliente' => $this->input->post('modificado_cliente')
         );
+
         if ($id == 0) {
             return $this->db->insert('contactos', $data);
         } else {
