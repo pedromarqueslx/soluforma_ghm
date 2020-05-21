@@ -166,7 +166,7 @@ $count_rows_by_id = $query->num_rows();
     <select class="custom-select" name="cliente_cliente">
         <option selected value="<?php echo $contactos_item['cliente_cliente']; ?>"><?php echo $contactos_item['cliente_cliente']; ?></option>
         <option value="Sim">Sim</option>
-        <option value="Nao">Não</option>
+        <option value="Não">Não</option>
     </select>   
     </div>
 </div>
