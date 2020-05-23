@@ -30,7 +30,7 @@
 <div class="col-md-3">
     <label>Empresa *</label>
     <div class="control">
-        <select id='sel_city' class="custom-select d-block w-100 " name="empresa"  >
+        <select id='sel_city' class="custom-select d-block w-100 " name="empresa">
         <option selected value="<?php echo $funcionarios_item['empresa'] ?>"><?php echo $funcionarios_item['empresa']; ?></option>
         <?php
         foreach($contactos as $contacto) {
@@ -112,7 +112,7 @@
 <div class="col-md-3">
     <label>Data Nascimento</label>
     <div class="control">
-    <input type="text" id="datepicker2" onchange="submitBday(), ValidadeExameMedico()" onclick="submitBday(), ValidadeExameMedico()" class="form-control" name="data_nascimento" value="<?php echo $funcionarios_item['data_nascimento'] ?>" />
+    <input type="text" id="datepicker2" onchange="submitBday(); ValidadeExameMedico()" onclick="submitBday(); ValidadeExameMedico()" class="form-control" name="data_nascimento" value="<?php echo $funcionarios_item['data_nascimento'] ?>" />
     <div class="small"><?php echo form_error('data_nascimento'); ?></div>   
     </div>
 </div>
@@ -369,11 +369,26 @@ function ValidadeExameMedico() {
 
 <script>
 function submitBday() {
-    var Q4A = "";
-    var Bdate = document.getElementById('datepicker2').value;
-    var data_nascimento = +new Date(Bdate);
+    /*
+    let Q4A = "";
+    let Bdate = document.getElementById('datepicker2').value;
+    let data_nascimento = +new Date(Bdate);
     Q4A += ~~ ((Date.now() - data_nascimento) / (31557600000));
     document.getElementById('resultBday2').setAttribute('value', Q4A);
+    */
+
+    var today = new Date();
+    //var birthDate = new Date(dateString);
+    let Bdate = document.getElementById('datepicker2').value;
+    var birthDate = new Date(Bdate);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    document.getElementById('resultBday2').setAttribute('value', age);
+
 }
+
 </script>
 

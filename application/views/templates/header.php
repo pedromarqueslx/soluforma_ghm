@@ -170,7 +170,7 @@ select[readonly] {
 </style>
 
 </head>
-<body onload="submitdemissao()">
+<body onload="submitdemissao(); submitBday()">
 
 <!-- <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">-->
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
