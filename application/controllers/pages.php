@@ -27,7 +27,7 @@ class Pages extends CI_Controller {
               //If no session, redirect to login page
               redirect('login', 'refresh');
             }
-              
+
          function logout()
           {
             $this->session->unset_userdata('logged_in');
@@ -39,7 +39,7 @@ class Pages extends CI_Controller {
             //$data['equipamentos'] = $this->pages_model->get_equipamentoss();
             //$data['equipamentos'] = $this->pages_model->get_equipamentos();
             //$data['artigos_oficina'] = $this->pages_model->get_artigos_oficina();
-            //variavel $data é passada para as views - necessario criar views para fazer render    
+            //variavel $data é passada para as views - necessario criar views para fazer render
             //$this->load->view('templates/header');
             //$this->load->view('pages/index');
             $this->load->view('pages/login');
@@ -49,6 +49,6 @@ class Pages extends CI_Controller {
     {
         $this->load->helper('pdf_helper');
         $this->load->view('pages/pdf');
-    }        
+    }
  }
 ?>

@@ -1,6 +1,4 @@
 
-
-
 <main role="main">
   <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="jumbotron">
@@ -9,15 +7,13 @@
       <hr>
     </div>
   </div>
-</main> 
+</main>
 
- 
+
 <div class="container">
-<!-- Example row of columns -->
-<div class="row">
- 
+    <div class="row">
 
-<?php if ($user['user_profile'] == 'Administrator') { 
+<?php if ($user['user_profile'] == 'Administrator') {
 echo '<div class="col-md-6">';
 echo '<div class="table-responsive">';
 echo '<table class="table table-striped">';
@@ -31,15 +27,15 @@ foreach ($servicos as $servicos_item) {
 echo '<tr>';
 echo '<td>';
 echo '<a href="';
-echo site_url('servicos/edit/' . $servicos_item['id']); 
+echo site_url('servicos/edit/' . $servicos_item['id']);
 echo '">';
-echo $servicos_item['title']; 
+echo $servicos_item['title'];
 echo '</a></td>';
 echo '<td>';
 echo '<a href="';
-echo site_url('servicos/edit/' . $servicos_item['id']); 
+echo site_url('servicos/edit/' . $servicos_item['id']);
 echo '">';
-echo $servicos_item['data_servicos']; 
+echo $servicos_item['data_servicos'];
 echo '</a></td>';
 echo '</tr>';
 
@@ -48,22 +44,25 @@ echo '</tbody>';
 echo '</table>';
 echo '</div>';
 echo '</div>';
-} ?>
+}
+?>
 
 <!-- close row -->
 </div>
+
 <?php
 $segment_1 = $this->uri->segment(1);
 $segment = $this->uri->segment(2);
 $segment_3 = $this->uri->segment(3);
 //echo $segment_3;
 ?>
+
 <div class="row">
-<div class="col-md-4"> 
+<div class="col-md-4">
     <a class="btn btn-primary" href="<?php echo site_url(); ?>/<?php echo 'contactos'; ?>/create/<?php echo $segment_3; ?>" >Nova Empresa</a>
     <a class="btn btn-primary" href="<?php echo site_url(); ?>/<?php echo 'servicos'; ?>/create/<?php echo $segment_3; ?>" >Nova Formação</a>
-</div> 
-<div class="col-md-8"> 
+</div>
+<div class="col-md-8">
 <!-- GRAFICO GRAFICO HISTÓRICO DE INTERVENÇÕES -->
 <?php
 $query = $this->db->query("SELECT * FROM servicos;");
@@ -84,7 +83,7 @@ $row=$q->row();
 $fevereiro=$row->fevereiro;
 //echo $fevereiro;
 ?>
-<?php 
+<?php
 // Query for Março
 $this->db->select("(SELECT COUNT(categoria_servicos) FROM servicos WHERE YEAR(data_servicos)='$year_for_graphic' AND MONTH(data_servicos)='03' AND categoria_servicos='1') as marco ");
 $q=$this->db->get('servicos');
@@ -92,7 +91,7 @@ $row=$q->row();
 $marco=$row->marco;
 //echo $marco;
 ?>
-<?php 
+<?php
 // Query for Abril
 $this->db->select("(SELECT COUNT(categoria_servicos) FROM servicos WHERE YEAR(data_servicos)='$year_for_graphic' AND MONTH(data_servicos)='04' AND categoria_servicos='1') as abril ");
 $q=$this->db->get('servicos');
@@ -100,7 +99,7 @@ $row=$q->row();
 $abril=$row->abril;
 //echo $abril;
 ?>
-<?php 
+<?php
 // Query for maio
 $this->db->select("(SELECT COUNT(categoria_servicos) FROM servicos WHERE YEAR(data_servicos)='$year_for_graphic' AND MONTH(data_servicos)='05' AND categoria_servicos='1') as maio ");
 $q=$this->db->get('servicos');
@@ -108,7 +107,7 @@ $row=$q->row();
 $maio=$row->maio;
 //echo $maio;
 ?>
-<?php 
+<?php
 // Query for Junho
 $this->db->select("(SELECT COUNT(categoria_servicos) FROM servicos WHERE YEAR(data_servicos)='$year_for_graphic' AND MONTH(data_servicos)='06' AND categoria_servicos='1') as junho ");
 $q=$this->db->get('servicos');
@@ -116,7 +115,7 @@ $row=$q->row();
 $junho=$row->junho;
 //echo $junho;
 ?>
-<?php 
+<?php
 // Query for Junho
 $this->db->select("(SELECT COUNT(categoria_servicos) FROM servicos WHERE YEAR(data_servicos)='$year_for_graphic' AND MONTH(data_servicos)='07' AND categoria_servicos='1') as julho ");
 $q=$this->db->get('servicos');
@@ -124,7 +123,7 @@ $row=$q->row();
 $julho=$row->julho;
 //echo $julho;
 ?>
-<?php 
+<?php
 // Query for agosto
 $this->db->select("(SELECT COUNT(categoria_servicos) FROM servicos WHERE YEAR(data_servicos)='$year_for_graphic' AND MONTH(data_servicos)='08' AND categoria_servicos='1') as agosto ");
 $q=$this->db->get('servicos');
@@ -132,7 +131,7 @@ $row=$q->row();
 $agosto=$row->agosto;
 //echo $agosto;
 ?>
-<?php 
+<?php
 // Query for setembro
 $this->db->select("(SELECT COUNT(categoria_servicos) FROM servicos WHERE YEAR(data_servicos)='$year_for_graphic' AND MONTH(data_servicos)='09' AND categoria_servicos='1') as setembro ");
 $q=$this->db->get('servicos');
@@ -140,23 +139,23 @@ $row=$q->row();
 $setembro=$row->setembro;
 //echo $setembro;
 ?>
-<?php 
+<?php
 // Query for outubro
 $this->db->select("(SELECT COUNT(categoria_servicos) FROM servicos WHERE YEAR(data_servicos)='$year_for_graphic' AND MONTH(data_servicos)='10' AND categoria_servicos='1') as outubro ");
 $q=$this->db->get('servicos');
 $row=$q->row();
 $outubro=$row->outubro;
 //echo $outubro;
-?> 
-<?php 
+?>
+<?php
 // Query for novembro
 $this->db->select("(SELECT COUNT(categoria_servicos) FROM servicos WHERE YEAR(data_servicos)='$year_for_graphic' AND MONTH(data_servicos)='11' AND categoria_servicos='1') as novembro ");
 $q=$this->db->get('servicos');
 $row=$q->row();
 $novembro=$row->novembro;
 //echo $novembro;
-?> 
-<?php 
+?>
+<?php
 // Query for dezembro
 $this->db->select("(SELECT COUNT(categoria_servicos) FROM servicos WHERE YEAR(data_servicos)='$year_for_graphic' AND MONTH(data_servicos)='12' AND categoria_servicos='1') as dezembro ");
 $q=$this->db->get('servicos');
@@ -168,8 +167,8 @@ $dezembro=$row->dezembro;
 <?php
 }
 /*else{
-if ($user['id'] >= 7) { 
-    echo "De momento não há registo de Serviços registados"; } 
+if ($user['id'] >= 7) {
+    echo "De momento não há registo de Serviços registados"; }
 else {
     echo '<a href="' . site_url() . '/servicos/create">Por favor adicione um novo registos de Serviços.</a><br>';
     echo '<a href="' . site_url() . '/servicos/create"><button class="ink-button grey small"><span class="fa fa-plus"></span> Novo Registo</button></a>';
@@ -194,7 +193,7 @@ var chart = new Chart(ctx, {
         //backgroundColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgb(12, 91, 170)',
         borderColor: 'rgb(7, 49, 91)',
-        data: [<?php echo $janeiro; ?>, <?php echo $fevereiro; ?>, <?php echo $marco; ?>, <?php echo $abril; ?>, <?php echo $maio; ?>, <?php echo $junho; ?>, 
+        data: [<?php echo $janeiro; ?>, <?php echo $fevereiro; ?>, <?php echo $marco; ?>, <?php echo $abril; ?>, <?php echo $maio; ?>, <?php echo $junho; ?>,
         <?php echo $julho; ?>, <?php echo $agosto; ?>, <?php echo $setembro; ?>, <?php echo $outubro; ?>, <?php echo $novembro; ?>, <?php echo $dezembro; ?>,],
     }]
     },
@@ -207,14 +206,14 @@ var chart = new Chart(ctx, {
                 max: 120,
                 min: 0,
                 stepSize: 20
-                }      
+                }
             }]
         }
     }
 });
 </script>
 <!-- FIM DO GRAFICO HISTÓRICO DE INTERVENÇÕES -->
-</div> 
+</div>
 
 <!-- close row -->
 </div>
