@@ -2,8 +2,7 @@
 <div class="container">
 <div class="row mb-4">
 <div class="col-md-12">
-<h3 class="my-4 text-primary">Emissão de Novos Certificados</h3>
-
+<h2 class="my-4 text-primary">Emissão de Certificados 2021</h2>
 </div>
 </div>
 </div>
@@ -16,6 +15,13 @@
     <input type="hidden" id="sel_n_cliente" class="form-control" name="area_servicos" />
     </div>
 </div>
+
+<?php
+    $conteudos []  = 0;
+    $formadores [] = 0;
+    $contactos []  = 0;
+    $user[]        = 0;
+?>
 
 <div class="container">
 <div class="row">

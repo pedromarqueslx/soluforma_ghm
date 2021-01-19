@@ -1,20 +1,27 @@
 <div class="container-fluid bg-light">
-<div class="container">    
+<div class="container">
 <div class="row mb-4">
 <div class="col-md-12">
-<h3 class="my-4 text-primary">Emissão de Novos Certificados</h3>
+<h2 class="my-4 text-primary">Emissão de Certificados 2018</h2>
 </div>
 </div>
 </div>
-</div> 
+</div>
 
 <?php echo form_open('servicos/create'); ?>
 <form>
-<div class="col-md-3">   
+<div class="col-md-3">
     <div id="sel_n_cliente" class="sel_n_cliente" >
     <input type="hidden" id="sel_n_cliente" class="form-control" name="area_servicos" />
     </div>
 </div>
+
+<?php
+    $conteudos []  = 0;
+    $formadores [] = 0;
+    $contactos []  = 0;
+    $user[]        = 0;
+?>
 
 <div class="container">
 <div class="row">
@@ -34,7 +41,7 @@
 
 <div class="col-md-4">
     <label>Formador *</label>
-    <div class="control"> 
+    <div class="control">
         <select class="form-control" name="formadores_servicos" class="form-control" required>
             <option value="" selected="selected">-- Seleccionar Formador --</option>
             <?php foreach ($formadores as $formadores_item): ?>
@@ -43,8 +50,8 @@
         </select>
     </div>
     <div class="small"><?php echo form_error('formadores_servicos'); ?></div>
-</div> 
-<div class="col-md-4"> 
+</div>
+<div class="col-md-4">
     <div class="control-group required all-20 small-100 tiny-100">
     <label>Data da Formação *</label>
     <div class="control">
@@ -68,8 +75,8 @@
     <div id="nome" class="nome">
     <textarea type="text" id="nome" class="form-control" name="nome_servicos" placeholder="Nome" rows="3" readonly ></textarea>
     </div>
-    </div>    
-</div>    
+    </div>
+</div>
 <div class="col-md-4">
     <label>Horas</label>
     <div class="control">
@@ -78,7 +85,7 @@
     </div>
     </div>
 </div>
-<div class="col-md-4">                    
+<div class="col-md-4">
     <label>Conteúdos Programáticos</label>
     <div class="control">
     <div id="conteudos" class="conteudos">
@@ -91,7 +98,7 @@
 <hr>
 
 <div class="row">
-<div class="col-md-4">   
+<div class="col-md-4">
     <label>Seleccionar Empresa e associar Funcionários *</label>
     <div class="control">
     <select id='sel_city' class="form-control" name="title">
@@ -105,7 +112,7 @@
     </div>
     <div class="small"><?php echo form_error('title'); ?></div>
 </div>
-<div class="col-md-8"> 
+<div class="col-md-8">
     <div class="control-group required all-20 small-100 tiny-100">
     <label>Local da Formação *</label>
     <div class="control">
@@ -137,7 +144,7 @@
 <div class="row">
 <div class="col-md-8">
     <a class="btn btn-primary" href="<?php echo base_url("/index.php/users/account/"); ?>" >Cancelar</a>
-    <button class="btn btn-primary">Guardar</button>    
+    <button class="btn btn-primary">Guardar</button>
 </div>
 <div class="col-md-4">
 </div>
@@ -162,7 +169,7 @@
         data: {empresa: empresa},
         dataType: 'json',
         success: function(response){
-          // Remove options 
+          // Remove options
           $('#sel_depart').find('input').remove();
           $('#sel_depart').find('label').remove();
           $('.form-checks').find('div').remove();
@@ -226,7 +233,7 @@
                 data: {id: id},
                 dataType: 'json',
                 success: function(response){
-                        
+
             // Remove options
             $('.nome').find('textarea').remove();
             $('.horas').find('textarea').remove();
