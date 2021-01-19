@@ -21,7 +21,7 @@ class Home extends CI_Controller {
       redirect('login', 'refresh');
 	}
   }
-  
+
   function logout()
   {
     $this->session->unset_userdata('logged_in');
@@ -32,7 +32,7 @@ class Home extends CI_Controller {
     {
         $this->load->helper('pdf_helper');
         $this->load->view('home/pdf');
-    } 
+    }
 
 }
 

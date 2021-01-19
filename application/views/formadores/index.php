@@ -1,18 +1,18 @@
 
 <div class="container-fluid bg-light">
-<div class="container">    
-<div class="row mb-4">
-<div class="col-12">
-<h3 class="my-4 text-primary">Registo de Formadores</h3>
-</div>
-</div>
-</div>
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h3 class="my-4 text-primary">Registo de Formadores</h3>
+            </div>
+        </div>
+    </div>
 </div>
 
 
 <div class="container">
 <div class="row">
-<div class="col-md-12"> 
+<div class="col-md-12">
 
 <script>
 $(document).ready(function() {
@@ -20,7 +20,7 @@ $('#index_formadores').DataTable( {
 dom: 'Blfrtip',
 buttons: [
 'excel', 'print'
-],    
+],
 "language": {
 "sProcessing":   "A processar...",
 "sLengthMenu":   "Mostrar _MENU_ registos",
@@ -77,7 +77,7 @@ $segment_1 = $this->uri->segment(1);
 $segment = $this->uri->segment(2);
 $segment_3 = $this->uri->segment(3);
 //echo $segment_3;
-?>    
+?>
 <a class="btn btn-primary" href="<?php echo site_url(); ?>/<?php echo 'formadores'; ?>/create/<?php echo $segment_3; ?>" >Novo Formador</a>
 </div>
 <!-- close row -->

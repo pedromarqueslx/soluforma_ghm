@@ -1,28 +1,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<!--
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
--->
-<!-- LOAD JQUERY -->
-<!--
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
--->
-
 <!-- OFFLINE -->
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery/jquery-ui.css">
 <script src="<?php echo base_url(); ?>assets/jquery/jquery-3.3.1.js"></script>
 <script src="<?php echo base_url(); ?>assets/jquery/jquery-ui.js"></script>
-
-
 <!--
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.4.1/js/dataTables.buttons.js"></script>
@@ -44,7 +25,6 @@
 <!-- LOAD http://momentjs.com/ -->
 <script src="<?php echo base_url(); ?>assets/js/moment.js"></script>
 
-
 <script>
 $( function() {
     $("#datepicker").datepicker(
@@ -59,7 +39,7 @@ $( function() {
 	    prevText: 'Anterior'
     }
     	);
- 	} 
+ 	}
   );
 $( function() {
     $("#datepicker1").datepicker(
@@ -74,7 +54,7 @@ $( function() {
 	    prevText: 'Anterior'
     }
     	);
- 	} 
+ 	}
   );
 $( function() {
     $("#datepicker2").datepicker(
@@ -168,7 +148,6 @@ $( function() {
   );
 </script>
 
-
     <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function() {
@@ -191,8 +170,6 @@ $( function() {
       })();
     </script>
 
-
-
-
 	</body>
+
 </html>
