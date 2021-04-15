@@ -54,19 +54,19 @@ background: #ededed;
 footer {
 background: #ccc;
 }
-</style>   	
+</style>
 </head>
 
 <body>
 <div class="ink-grid">
-<div class="all-100 small-100 tiny-100 small align-right small uppercase"><p class="note"><?php echo date("Y-m-d");?><p></div>   
+<div class="all-100 small-100 tiny-100 small align-right small uppercase"><p class="note"><?php echo date("Y-m-d");?><p></div>
     <header>
         <div class="column-group">
         	<div class="all-50 small-100 tiny-100 small align-left"><h2><a href="<?php echo site_url();?>"><img src="<?php echo base_url("/assets/img/logoperolaparalela.png"); ?>"></img></div>
-        	<div class="all-50 small-100 tiny-100 small align-right"> 
+        	<div class="all-50 small-100 tiny-100 small align-right">
         		<a href="<?php echo site_url();?>/users/registration"><button class="ink-button green"><span class="fa fa-user"></span></button></a>
-        		<a href="<?php echo base_url(); ?>index.php/users/logout"><button class="ink-button green"><span class="fa fa-sign-in"></span></button></a> 
-        	</div>              	
+        		<a href="<?php echo base_url(); ?>index.php/users/logout"><button class="ink-button green"><span class="fa fa-sign-in"></span></button></a>
+        	</div>
         </div>
 	<?php
 		$segment = $this->uri->segment(1);
@@ -75,14 +75,14 @@ background: #ccc;
 	</header>
 
 		<hr>
-        
+
 <div class="container">
     <!-- validation -->
 	<div class="grids">
 		<div class="progressbar-heading grids-heading">
 			<h2>User Account</h2>
 		</div>
-		
+
 		<div class="forms-grids">
 			<div class="forms3">
 			<div class="w3agile-validation w3ls-validation">

@@ -49,11 +49,10 @@ class Users extends CI_Controller {
     }
 
     public function account() {
-        //$data = array();
+
         if($this->session->userdata('isUserLoggedIn')) {
             // Go to user model getRows
             $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
-
             $this->db->where('visivel_servicos', '1')->where('categoria_servicos', '1')->limit(40)->order_by("id", "desc");
             $data['servicos2021'] = $this->servicos2021_model->get_servicos();
 

@@ -36,10 +36,212 @@ body {
     border-top-right-radius: 0;
 }*/
 
-.form-control {
-    font-size: 12px;
-}
+        /* Typography */
+        h1 {
+             font-size: 18px;
+             color: #0066cc;
+             margin-top: 20px;
+             padding-bottom: 9px;
+             border-bottom: 1px solid #eee;
+        }
 
-.btn {
-    font-size: 12px;
-}
+        h2 {
+            font-size: 16px;
+            color: #0066cc;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+          font-size: 14px;
+          color: #0066cc;
+        }
+
+        h3 {
+            font-size: 12px;
+            color: #0066cc;
+        }
+
+        .form-control {
+            font-size: 12px;
+        }
+
+        .btn {
+            font-size: 12px;
+        }
+
+        .warning {
+            background-color: red !important;
+        }
+
+        .sidebar {
+          position: fixed;
+          top: 51px;
+          bottom: 0;
+          left: 0;
+          z-index: 1000;
+          padding: 20px;
+          overflow-x: hidden;
+          overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+          border-right: 1px solid #eee;
+        }
+
+        .sidebar {
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        .sidebar .nav {
+          margin-bottom: 20px;
+        }
+
+        .row {
+          margin-bottom: 20px;
+        }
+
+        .sidebar {
+          width: 100%;
+        }
+
+        .sidebar  {
+          margin-left: 0;
+        }
+
+        .sidebar .nav-link {
+          border-radius: 0;
+        }
+
+        .small {
+          margin-top: 5px;
+          font-size: 12px;
+          color: #ff6600;
+        }
+
+        .placeholders {
+          padding-bottom: 3rem;
+        }
+
+        .placeholder img {
+          padding-top: 1.5rem;
+          padding-bottom: 1.5rem;
+        }
+
+        input, textarea, .btn, fieldset, select {
+          box-shadow: 1px 1px 2px #f1f1f1;
+          font-size: 90%;
+        }
+
+/*        .form-control {*/
+/*            font-size: 85%;*/
+/*        }*/
+
+        label {
+          color: #0066cc;
+        }
+
+        .form-control::placeholder {
+            color: #CCCCCC;
+            opacity: 1; /* Firefox */
+        }
+
+        .form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+           color: #CCCCCC;
+        }
+
+        .form-control::-ms-input-placeholder { /* Microsoft Edge */
+           color: #CCCCCC;
+        }
+
+/*        table, th, td {*/
+/*          font-size: 90%;*/
+/*        }*/
+
+        tfoot input {
+          width: 100%;
+          padding: 3px;
+        }
+
+        .readonly {
+          background: #eee;
+          pointer-events: none;
+          touch-action: none;
+        }
+
+        select[readonly] {
+          background: #eee;
+          pointer-events: none;
+          touch-action: none;
+        }
+
+        .custom-control-indicator {
+            position: absolute;
+            top: .25rem;
+            left: 0;
+            display: block;
+            width: 1rem;
+            height: 1rem;
+            pointer-events: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-color: #ddd;
+            background-repeat: no-repeat;
+            background-position: center center;
+            -webkit-background-size: 50% 50%;
+            background-size: 50% 50%;
+        }
+
+        .custom-checkbox .custom-control-indicator {
+            border-radius: .25rem;
+        }
+
+        .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E");
+        }
+
+        .custom-control-input:checked ~ .custom-control-indicator {
+            color: #fff;
+            background-color: #0275d8;
+        }
+
+        .custom-checkbox .custom-control-indicator {
+            border-radius: .25rem;
+        }
+
+        .bg-dark {
+          background-color: #232930 !important;
+        }
+
+        .logo img {
+          margin-top: -3px;
+        }
+
+        body {
+            padding-top: 50px;
+        }
+
+        @media (min-width: 576px) {
+
+        }
+
+        @media (min-width: 768px) {
+            .nav-link {
+                padding: 0.5rem !important;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .nav-link {
+                padding: 0.3rem !important;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .nav-link {
+                padding: 1rem !important;
+            }
+            body {
+                padding-top: 70px;
+            }
+        }
+
