@@ -42,27 +42,35 @@
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
-                <li <?php if(($segment == "formadores" && $segment_2 == 'index') || ($segment == "formadores") || ($segment == "formadores" && $segment_2 == "edit") || ($segment == "formadores" && $segment_2 == "create")) { echo "class='nav-item active'"; } else {echo ""; } ?> >
-                    <?php if ($user['user_profile'] == 'Administrator')
-                    {echo '<a class="nav-link" href="' . site_url() . '/formadores/index/">Formadores</a>';}
-                    ?>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle
+                    <?php if(($segment == "categorias_profissionais" && $segment_2 == 'index') || ($segment == "categorias_profissionais") || ($segment == "categorias_profissionais" && $segment_2 == "edit") || ($segment == "categorias_profissionais" && $segment_2 == "create")) { echo 'active'; } else {echo ""; } ?>
+                    <?php if(($segment == "conteudos" && $segment_2 == "index") || ($segment == "conteudos") || ($segment == "conteudos" &&$segment_2 == "edit") || ($segment == "conteudos" &&$segment_2 == "create") ) { echo 'active'; } else {echo ""; } ?>
+                    <?php if(($segment == "formadores" && $segment_2 == 'index') || ($segment == "formadores") || ($segment == "formadores" && $segment_2 == "edit") || ($segment == "formadores" && $segment_2 == "create")) { echo 'active'; } else {echo ""; } ?>"
+                       href="#" id="dropdown00" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formadores</a>
+                    <div class="dropdown-menu shadow" aria-labelledby="dropdown00">
+                        <?php if ($user['user_profile'] == 'Administrator') {
+                            echo '<a class="dropdown-item" href="' . site_url() . '/formadores/index/">Registo de Formadores</a>';}
+                        ?>
+                        <?php if ($user['user_profile'] == 'Administrator') {
+                            echo '<a class="dropdown-item" href="' . site_url() . '/conteudos/index/">Conteúdos de Formação</a>';}
+                        ?>
+                        <?php if ($user['user_profile'] == 'Administrator') {
+                            echo '<a class="dropdown-item" href="' . site_url() . '/legislacao/index/">Legislação de Infrações</a>';}
+                        ?>
+                        <?php if ($user['user_profile'] == 'Administrator') {
+                            echo '<a class="dropdown-item" href="' . site_url() . '/categorias_profissionais/index/">Categorias Profissionais</a>';}
+                        ?>
+                    </div>
                 </li>
 
-                <li <?php if(($segment == "categorias_profissionais" && $segment_2 == 'index') || ($segment == "categorias_profissionais") || ($segment == "categorias_profissionais" && $segment_2 == "edit") || ($segment == "categorias_profissionais" && $segment_2 == "create")) { echo "class='nav-item active'"; } else {echo ""; } ?> >
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle
+                    <?php if(($segment == "funcionarios" && $segment_2 == 'index') || ($segment == "funcionarios") || ($segment == "funcionarios" && $segment_2 == "edit") || ($segment == "funcionarios" && $segment_2 == "create")) { echo 'active'; } else {echo ""; } ?>"
+                        href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Funcionários</a>
+                    <div class="dropdown-menu shadow" aria-labelledby="dropdown01">
                     <?php if ($user['user_profile'] == 'Administrator')
-                    {echo '<a class="nav-link" href="' . site_url() . '/categorias_profissionais/index/">Categorias</a>';}
-                    ?>
-                </li>
-
-                <li <?php if(($segment == "funcionarios" && $segment_2 == 'index') || ($segment == "funcionarios") || ($segment == "funcionarios" && $segment_2 == "edit") || ($segment == "funcionarios" && $segment_2 == "create")) { echo "class='nav-item active'"; } else {echo ""; } ?> >
-                    <?php if ($user['user_profile'] == 'Administrator')
-                    {echo '<a class="nav-link" href="' . site_url() . '/funcionarios/index/">Funcionários</a>';}
-                    ?>
-                </li>
-
-                <li <?php if(($segment == "conteudos" && $segment_2 == "index") || ($segment == "conteudos") || ($segment == "conteudos" &&$segment_2 == "edit") || ($segment == "conteudos" &&$segment_2 == "create") ) { echo "class='nav-item active'"; } else {echo ""; } ?> >
-                    <?php if ($user['user_profile'] == 'Administrator')
-                    {echo '<a class="nav-link" href="' . site_url() . '/conteudos/index/">Conteúdos</a>';}
+                    {echo '<a class="dropdown-item" href="' . site_url() . '/funcionarios/index/">Funcionários</a>';}
                     ?>
                 </li>
 
@@ -73,7 +81,6 @@
                     <?php if(($segment == "servicos2019" && $segment_2 == 'index') || ($segment == "servicos2019") || ($segment == "servicos2019" && $segment_2 == "edit") || ($segment == "servicos2019" && $segment_2 == "create")) { echo 'active'; } else {echo ""; } ?>
                     <?php if(($segment == "servicos" && $segment_2 == 'index') || ($segment == "servicos") || ($segment == "servicos" && $segment_2 == "edit") || ($segment == "servicos" && $segment_2 == "create")) { echo 'active'; } else {echo ""; } ?>"
                        href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Certificados</a>
-
                     <div class="dropdown-menu shadow" aria-labelledby="dropdown01">
                         <?php if ($user['user_profile'] == 'Administrator') {
                             echo '<a class="dropdown-item" href="' . site_url() . '/servicos2021/index/">Certificados 2021</a>';}
@@ -88,7 +95,6 @@
                             echo '<a class="dropdown-item" href="' . site_url() . '/servicos/index/">Certificados 2018</a>';}
                         ?>
                     </div>
-
                 </li>
 
                 <li class="nav-item dropdown">
@@ -113,7 +119,6 @@
                             echo '<a class="dropdown-item" href="' . site_url() . '/formacoes/index/">Formações 2018</a>';}
                         ?>
                     </div>
-
                 </li>
 
                 <li <?php if(($segment == "contactos" && $segment_2 == "index") || ($segment == "contactos") || ($segment == "contactos" &&$segment_2 == "edit") || ($segment == "contactos" && $segment_2 == "create") ) { echo "class='nav-item active'"; } else {echo ""; } ?> >
@@ -125,6 +130,18 @@
                 <li <?php if(($segment == "multas" && $segment_2 == 'index') || ($segment == "multas") || ($segment == "multas" && $segment_2 == "edit") || ($segment == "multas" && $segment_2 == "create")) { echo "class='nav-item active'"; } else {echo ""; } ?> >
                     <?php if ($user['user_profile'] == 'Administrator')
                     {echo '<a class="nav-link" href="' . site_url() . '/multas/index/">Multas</a>';}
+                    ?>
+                </li>
+
+                <li <?php if(($segment == "discos" && $segment_2 == 'index') || ($segment == "discos") || ($segment == "discos" && $segment_2 == "edit") || ($segment == "discos" && $segment_2 == "create")) { echo "class='nav-item active'"; } else {echo ""; } ?> >
+                    <?php if ($user['user_profile'] == 'Administrator')
+                    {echo '<a class="nav-link" href="' . site_url() . '/discos/index/">Discos</a>';}
+                    ?>
+                </li>
+
+                <li <?php if(($segment == "motoristas" && $segment_2 == 'index') || ($segment == "motoristas") || ($segment == "motoristas" && $segment_2 == "edit") || ($segment == "motoristas" && $segment_2 == "create")) { echo "class='nav-item active'"; } else {echo ""; } ?> >
+                    <?php if ($user['user_profile'] == 'Administrator')
+                    {echo '<a class="nav-link" href="' . site_url() . '/motoristas/index/">Motoristas</a>';}
                     ?>
                 </li>
             </ul>

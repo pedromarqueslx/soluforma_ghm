@@ -13,12 +13,12 @@
 <div class="container-fluid bg-light">
     <div class="container">
         <div class="row pt-3 pb-3">
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 <h1>GHM - Gestão de Histórico de Multas</h1>
             </div>
-            <div class="col-6 ">
-                <a class="btn btn-success float-right" href="<?php echo site_url(); ?>/<?php echo 'contactos'; ?>/create/<?php echo $segment_3; ?>" >Nova Empresa</a>
-                <a class="btn btn-success float-right" href="<?php echo site_url(); ?>/<?php echo 'servicos2021'; ?>/create/<?php echo $segment_3; ?>" >Novo Certificado</a>
+            <div class="col-12 col-md-6 text-right">
+                <a class="btn btn-success mx-auto" href="<?php echo site_url(); ?>/<?php echo 'contactos'; ?>/create/<?php echo $segment_3; ?>" >Nova Empresa</a>
+                <a class="btn btn-success mx-auto" href="<?php echo site_url(); ?>/<?php echo 'servicos2021'; ?>/create/<?php echo $segment_3; ?>" >Novo Certificado</a>
             </div>
         </div>
     </div>
