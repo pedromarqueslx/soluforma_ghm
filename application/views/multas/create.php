@@ -31,22 +31,14 @@ $( "#tags" ).autocomplete({
 <div class="container">
 <div class="row">
 <?php
-
     $this->db->select_max('serial');
     $result = $this->db->get('artigos')->row_array();
     $a = $result['serial'];
     $serial = $result['serial'];
-
     //echo $a;
     //echo $serial;
-
 ?>
-    <script>
-        var x = 1;
-        var y = 2;
-        var z = x + y;
-        document.getElementById("demo").innerHTML = z;
-    </script>
+
 <div class="col-md-3">
     <label>ID</label>
     <div class="control">
