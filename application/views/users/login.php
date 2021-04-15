@@ -13,86 +13,65 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="shortcut icon" href="<?php echo base_url("/assets/img/favicon.ico"); ?>">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="<?php echo base_url("/assets/css/styles.css"); ?>">
         <style type="text/css">
-
-        body {
-            padding-top: 40px;
-            padding-bottom: 40px;
-            background: url("<?php echo base_url("/assets/img/07_background.jpg"); ?>") no-repeat center center fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-        }
-
-        .form-signin {
-            width: 100%;
-            max-width: 330px;
-            padding: 15px;
-            margin: 0 auto;
-        }
-        .form-signin .checkbox {
-            font-weight: 400;
-        }
-
-        .form-signin .form-control {
-            position: relative;
-            box-sizing: border-box;
-            height: auto;
-            padding: 10px;
-            font-size: 16px;
-        }
-
-        .form-signin .form-control:focus {
-            z-index: 2;
-        }
-
-        .form-signin input[type="email"] {
-            margin-bottom: -1px;
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 0;
-        }
-
-        .form-signin input[type="password"] {
-            margin-bottom: 10px;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-        }
-
-    </style>
+            body {
+                background: url("<?php echo base_url("/assets/img/07_background.jpg"); ?>") no-repeat center center fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+        </style>
     </head>
 
-    <body class="text-center">
+    <body>
 
-        <form class="form-signin" action="" method="post">
+    <div class="container">
 
-        <a href="<?php echo site_url(); ?>">
-            <img class="m-5 mx-auto" src="<?php echo base_url("/assets/img/logosoluforma.svg"); ?>" style="min-height: 110px">
-        </a>
+        <div class="row mt-5">
+            <div class="col text-center">
+                <a href="<?php echo site_url(); ?>">
+                    <img class="m-3 mx-auto" src="<?php echo base_url("/assets/img/logosoluforma.svg"); ?>" style="height:80px">
+                </a>
+            </div>
+        </div>
 
-        <!--<h1 class="mt-3 mb-3 font-weight-normal">Iniciar Sessão</h1>-->
+        <div class="row justify-content-center">
+            <div class="col-md-6 mx-auto">
+                <div class="card">
+                    <div class="card-body p-5">
+                        <form class="form-signin" action="" method="post">
+                            <?php
+                            if(!empty($error_msg)) {
+                                echo '<p class="small">'.$error_msg. '</p>';
+                            }
+                            ?>
+                            <div class="mt-2 mb-2">
+                                <label for="email">Endereço de E-mail</label>
+                                <input type="email" name="email" class="form-control" placeholder="E-mail" required autocomplete="email" autofocus>
+                                <?php echo form_error('email','<span class="help-block">','</span>'); ?>
+                            </div>
+                            <div class="mt-3 mb-2">
+                                <label for="password">Senha de Acesso</label>
+                                <input type="password" name="password" class="form-control" placeholder="" required>
+                                <div class="small"><?php echo form_error('password'); ?></div>
+                            </div>
+                            <input type="text" name="login_date" value="<?php echo date("Y-m-j"); ?>" id="inputPassword" hidden/>
+                            <button class="btn btn-lg btn-primary btn-block mt-4" type="submit" name="loginSubmit" value="Submit">Iniciar Sessão</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <?php
-            if(!empty($error_msg)) {
-                echo '<p class="small">'.$error_msg. '</p>';
-            }
-        ?>
+        <div class="row m-5 justify-content-center">
+            <div class="col text-center">
+                <p class="text-muted small">Soluforma, todos os direitos reservados &copy; 2018</p>
+            </div>
+        </div>
 
-        <input type="email" name="email" class="form-control" placeholder="Endereço de E-mail" required autofocus>
-
-            <?php echo form_error('email','<span class="help-block">','</span>'); ?>
-
-        <input type="password" name="password" class="form-control" placeholder="Senha de Acesso" required>
-
-            <div class="small"><?php echo form_error('password'); ?></div>
-
-        <input type="text" name="login_date" value="<?php echo date("Y-m-j"); ?>" id="inputPassword" hidden/>
-
-        <button class="btn btn-lg btn-primary btn-block mt-5" type="submit" name="loginSubmit" value="Submit">Entrar</button>
-
-        <p class="mt-5 mb-3 text-muted small">&copy; 2018</p>
-
-        </form>
+    </div>
 
     </body>
 
