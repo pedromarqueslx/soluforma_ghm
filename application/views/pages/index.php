@@ -12,38 +12,31 @@
 
 <div class="container-fluid bg-light">
     <div class="container">
-        <div class="row">
+        <div class="row pt-3 pb-3">
             <div class="col-6">
-                <h1 class="text-primary">GHM - Gestão de Histórico de Multas</h1>
+                <h1>GHM - Gestão de Histórico de Multas</h1>
             </div>
-            <div class="col-6">
-                <a class="btn btn-success" href="<?php echo site_url(); ?>/<?php echo 'contactos'; ?>/create/<?php echo $segment_3; ?>" >Nova Empresa</a>
-                <a class="btn btn-success" href="<?php echo site_url(); ?>/<?php echo 'servicos2021'; ?>/create/<?php echo $segment_3; ?>" >Novo Certificado</a>
+            <div class="col-6 ">
+                <a class="btn btn-success float-right" href="<?php echo site_url(); ?>/<?php echo 'contactos'; ?>/create/<?php echo $segment_3; ?>" >Nova Empresa</a>
+                <a class="btn btn-success float-right" href="<?php echo site_url(); ?>/<?php echo 'servicos2021'; ?>/create/<?php echo $segment_3; ?>" >Novo Certificado</a>
             </div>
         </div>
     </div>
 </div>
 
 <div class="container">
-
     <div class="row">
-
         <?php
-
         if ($user['user_profile'] == 'Administrator') {
             echo '<div class="col-md-12">';
             echo '<div class="table-responsive">';
-
             echo '<table class="table table-striped">';
-
             echo '<thead>';
             echo '<tr>';
             echo '<th><h2>Últimas Formações de 2021</h2></th>';
             echo '</tr>';
             echo '</thead>';
-
             echo '<tbody>';
-
             foreach ($servicos2021 as $servicos_item) {
                 echo '<tr>';
                 echo '<td>';
