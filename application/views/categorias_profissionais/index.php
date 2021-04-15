@@ -8,21 +8,20 @@ echo $message_display;
 }
 ?>
 
-
 <div class="container-fluid bg-light">
-<div class="container">    
-<div class="row mb-4">
-<div class="col-md-12">
-<h3 class="my-4 text-primary">Registo de Categorias Profissionais</h3>
-</div>
-</div>
-</div>
+    <div class="container">
+        <div class="row pt-3 pb-3">
+            <div class="col-12 col-md-6">
+                <h1>Categorias Profissionais</h1>
+            </div>
+        </div>
+    </div>
 </div>
 
 
 <div class="container">
 <div class="row">
-<div class="col-md-12"> 
+<div class="col-md-12">
 
 <script>
 $(document).ready(function() {
@@ -30,8 +29,8 @@ $(document).ready(function() {
         dom: 'Blfrtip',
         buttons: [
             'excel', 'print'
-        ], 
-        order:[ 0, "asc" ],      
+        ],
+        order:[ 0, "asc" ],
         "language": {
         "sProcessing":   "A processar...",
         "sLengthMenu":   "Mostrar _MENU_ registos",
@@ -67,9 +66,9 @@ $(document).ready(function() {
 <tbody>
     <?php foreach($results as $data) {?>
     <tr>
-        <td><a href="<?php echo site_url('categorias_profissionais/edit/'.$data->id); ?>"><?php echo $data->id; ?></a></td>        
+        <td><a href="<?php echo site_url('categorias_profissionais/edit/'.$data->id); ?>"><?php echo $data->id; ?></a></td>
         <td><a href="<?php echo site_url('categorias_profissionais/edit/'.$data->id); ?>"><?php echo $data->title; ?></a></td>
-        <td><a href="<?php echo site_url('categorias_profissionais/edit/'.$data->id); ?>"><?php echo $data->descricao_categorias_profissionais; ?></a></td>               
+        <td><a href="<?php echo site_url('categorias_profissionais/edit/'.$data->id); ?>"><?php echo $data->descricao_categorias_profissionais; ?></a></td>
     </tr>
     <?php } ?>
 </tbody>
@@ -91,7 +90,7 @@ $segment_1 = $this->uri->segment(1);
 $segment = $this->uri->segment(2);
 $segment_3 = $this->uri->segment(3);
 //echo $segment_3;
-?> 
+?>
 
 <a class="btn btn-primary" href="<?php echo site_url(); ?>/<?php echo 'categorias_profissionais'; ?>/create/<?php echo $segment_3; ?>" >Nova Categoria profissional</a>
 </div>

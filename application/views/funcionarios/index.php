@@ -9,21 +9,30 @@ echo $message_display;
 ?>
 
 
+<div class="container-fluid bg-light">
+    <div class="container">
+        <div class="row pt-3 pb-3">
+            <div class="col-12 col-md-6">
+                <h1>Registo de Funcionários</h1>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="container-fluid bg-light">
-<div class="container">    
-<div class="row mb-4">
-<div class="col-md-12">
-<h3 class="my-4 text-primary">Registo de Funcionários</h3>
-</div>
-</div>
-</div>
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h3 class="my-4 text-primary"></h3>
+            </div>
+        </div>
+    </div>
 </div>
 
 
 <div class="container">
 <div class="row">
-<div class="col-md-12"> 
+<div class="col-md-12">
 
 
 
@@ -32,8 +41,8 @@ echo $message_display;
 <table class="table table-striped display" id="table_id">
 <thead>
 <tr>
-	<th>Nº Cliente</th>	
-	<th>Empresa</th>	
+	<th>Nº Cliente</th>
+	<th>Empresa</th>
 	<th>Nome</th>
 	<th style="display: none;">Cliente</th>
 	<th style="display: none;">Cargo</th>
@@ -46,10 +55,10 @@ echo $message_display;
 	<th style="display: none;">Idade</th>
 	<th style="display: none;">Documento de Identificacão</th>
 	<th>Val. CC</th>
-	<th>Val. Carta</th>	
-	<th>Val. CAM</th>	
+	<th>Val. Carta</th>
+	<th>Val. CAM</th>
 	<th>Medicina</th>
-	<th>Val. Med.</th>	
+	<th>Val. Med.</th>
 	<th style="display: none;">Nº Carta</th>
 	<th>Val. Condutor</th>
 	<th style="display: none;">Docs Digitalizados</th>
@@ -93,7 +102,7 @@ echo $message_display;
 </tbody>
     <tfoot>
     <tr>
-	<th>Nº Cliente</th>	
+	<th>Nº Cliente</th>
     <th>Empresa</th>
     <th>Nome</th>
 	<th style="display: none;">Cliente</th>
@@ -105,13 +114,13 @@ echo $message_display;
 	<th style="display: none;">Nacionalidade</th>
 	<th style="display: none;">Data Nascimento</th>
 	<th style="display: none;">Idade</th>
-	<th style="display: none;">Documento de Identificacão</th>                
+	<th style="display: none;">Documento de Identificacão</th>
     <th>Val. CC</th>
     <th>Val. Carta</th>
     <th>Val. CAM</th>
     <th>Medicina</th>
     <th>Val. Med.</th>
-	<th style="display: none;">Nº Carta</th>                
+	<th style="display: none;">Nº Carta</th>
     <th>Val. Cartão Condutor</th>
     <th style="display: none;">Docs Digitalizados</th>
 	<th>Telefone</th>
@@ -134,7 +143,7 @@ $segment_1 = $this->uri->segment(1);
 $segment = $this->uri->segment(2);
 $segment_3 = $this->uri->segment(3);
 //echo $segment_3;
-?> 
+?>
 
 <a class="btn btn-primary" href="<?php echo site_url();?>/funcionarios/create/">Novo Funcionário</a>
 

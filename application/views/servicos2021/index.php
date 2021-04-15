@@ -1,11 +1,11 @@
 <div class="container-fluid bg-light">
-<div class="container">
-<div class="row mb-4">
-<div class="col-md-12">
-<h3 class="my-4 text-primary">Certificados Emitidos 2021</h3>
-</div>
-</div>
-</div>
+    <div class="container">
+        <div class="row pt-3 pb-3">
+            <div class="col-12 col-md-6">
+                <h1>Certificados Emitidos 2021</h1>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="container">

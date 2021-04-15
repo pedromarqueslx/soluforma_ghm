@@ -44,6 +44,7 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle
+                    <?php if(($segment == "infracoes" && $segment_2 == 'index') || ($segment == "infracoes") || ($segment == "infracoes" && $segment_2 == "edit") || ($segment == "infracoes" && $segment_2 == "create")) { echo 'active'; } else {echo ""; } ?>
                     <?php if(($segment == "categorias_profissionais" && $segment_2 == 'index') || ($segment == "categorias_profissionais") || ($segment == "categorias_profissionais" && $segment_2 == "edit") || ($segment == "categorias_profissionais" && $segment_2 == "create")) { echo 'active'; } else {echo ""; } ?>
                     <?php if(($segment == "conteudos" && $segment_2 == "index") || ($segment == "conteudos") || ($segment == "conteudos" &&$segment_2 == "edit") || ($segment == "conteudos" &&$segment_2 == "create") ) { echo 'active'; } else {echo ""; } ?>
                     <?php if(($segment == "formadores" && $segment_2 == 'index') || ($segment == "formadores") || ($segment == "formadores" && $segment_2 == "edit") || ($segment == "formadores" && $segment_2 == "create")) { echo 'active'; } else {echo ""; } ?>"
@@ -56,7 +57,7 @@
                             echo '<a class="dropdown-item" href="' . site_url() . '/conteudos/index/">Conteúdos de Formação</a>';}
                         ?>
                         <?php if ($user['user_profile'] == 'Administrator') {
-                            echo '<a class="dropdown-item" href="' . site_url() . '/legislacao/index/">Legislação de Infrações</a>';}
+                            echo '<a class="dropdown-item" href="' . site_url() . '/infracoes/index/">Legislação de Infrações</a>';}
                         ?>
                         <?php if ($user['user_profile'] == 'Administrator') {
                             echo '<a class="dropdown-item" href="' . site_url() . '/categorias_profissionais/index/">Categorias Profissionais</a>';}

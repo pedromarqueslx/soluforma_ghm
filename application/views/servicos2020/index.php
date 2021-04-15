@@ -1,16 +1,16 @@
 <div class="container-fluid bg-light">
-<div class="container">    
-<div class="row mb-4">
-<div class="col-md-12">
-<h3 class="my-4 text-primary">Certificados Emitidos 2020</h3>
+    <div class="container">
+        <div class="row pt-3 pb-3">
+            <div class="col-12 col-md-6">
+                <h1>Certificados Emitidos 2020</h1>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-</div>
-</div> 
 
 <div class="container">
 <div class="row">
-<div class="col-md-12"> 
+<div class="col-md-12">
 
 <div class="table-responsive">
 <table class="table table-striped" id="index_servicos">
@@ -21,7 +21,7 @@
     <th>Funcionário</th>
     <th>Formação</th>
     <th>Horas</th>
-    <th>Formador</th>            
+    <th>Formador</th>
     <th>Data</th>
     <th>Certificado</th>
     <th>Simplificado</th>
@@ -49,11 +49,11 @@
     <th>Funcionário</th>
     <th>Formação</th>
     <th>Horas</th>
-    <th>Formador</th>            
+    <th>Formador</th>
     <th>Data</th>
     <th style="display: none;">Certificado</th>
     <th style="display: none;">Simplificado</th>
-    </tr>    
+    </tr>
     </tfoot>
 </table>
 </div>
@@ -69,7 +69,7 @@ $segment_1 = $this->uri->segment(1);
 $segment = $this->uri->segment(2);
 $segment_3 = $this->uri->segment(3);
 //echo $segment_3;
-?>    
+?>
 
 <a class="btn btn-primary" href="<?php echo site_url(); ?>/<?php echo 'servicos2020'; ?>/create/<?php echo $segment_3; ?>" >Novo Certificado</a>
 
@@ -115,7 +115,7 @@ $(document).ready(function() {
             "sLast":     "Último"
             }
             }
-            } 
+            }
             );
 
     // Apply the search
@@ -129,5 +129,5 @@ $(document).ready(function() {
             }
         } );
     } );
-} );         
+} );
 </script>

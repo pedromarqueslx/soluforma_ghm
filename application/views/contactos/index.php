@@ -1,18 +1,18 @@
 
 <div class="container-fluid bg-light">
-<div class="container">    
-<div class="row mb-4">
-<div class="col-md-12">
-<h3 class="my-4 text-primary">Registo de Empresas</h3>
-</div>
-</div>
-</div>
+    <div class="container">
+        <div class="row pt-3 pb-3">
+            <div class="col-12 col-md-6">
+                <h1>Registo de Empresas</h1>
+            </div>
+        </div>
+    </div>
 </div>
 
 
 <div class="container">
 <div class="row">
-<div class="col-md-12"> 
+<div class="col-md-12">
 
 <script>
 $(document).ready(function() {
@@ -20,7 +20,7 @@ $('#index_contactos').DataTable( {
 dom: 'Blfrtip',
 buttons: [
 'excel', 'print'
-],    
+],
 "language": {
 "sProcessing":   "A processar...",
 "sLengthMenu":   "Mostrar _MENU_ registos",
@@ -47,7 +47,7 @@ buttons: [
 <table class="table table-striped" id="index_contactos">
 <thead>
 <tr>
-<th>ID</th>	
+<th>ID</th>
 <th>Nome</th>
 <th id="result_tr" style="display: none;">Morada</th>
 <th id="result_tr" style="display: none;">Localidade</th>
@@ -80,7 +80,7 @@ buttons: [
 <td id="result_tr" style="display: none;"><a href="<?php echo site_url('contactos/edit/'.$data->id); ?>"><?php echo $data->endereco_cliente; ?></a></td>
 <td id="result_tr" style="display: none;"><a href="<?php echo site_url('contactos/edit/'.$data->id); ?>"><?php echo $data->localidade_cliente; ?></a></td>
 <td id="result_tr" style="display: none;"><a href="<?php echo site_url('contactos/edit/'.$data->id); ?>"><?php echo $data->codigopostal_cliente; ?></a></td>
-<td id="result_tr" style="display: none;"><a href="<?php echo site_url('contactos/edit/'.$data->id); ?>"><?php echo $data->cidade_cliente; ?></a></td>	
+<td id="result_tr" style="display: none;"><a href="<?php echo site_url('contactos/edit/'.$data->id); ?>"><?php echo $data->cidade_cliente; ?></a></td>
 <td id="result_tr" style="display: none;"><a href="<?php echo site_url('contactos/edit/'.$data->id); ?>"><?php echo $data->contribuinte_cliente; ?></a></td>
 <td ><a href="<?php echo site_url('contactos/edit/'.$data->id); ?>"><?php echo $data->pessoa_cliente; ?></a></td>
 
@@ -115,7 +115,7 @@ $segment_1 = $this->uri->segment(1);
 $segment = $this->uri->segment(2);
 $segment_3 = $this->uri->segment(3);
 //echo $segment_3;
-?>    
+?>
 <a class="btn btn-primary" href="<?php echo site_url(); ?>/<?php echo 'contactos'; ?>/create/<?php echo $segment_3; ?>" >Nova Empresa</a>
 </div>
 <!-- close row -->
@@ -125,8 +125,8 @@ $segment_3 = $this->uri->segment(3);
 <div class="row">
 	<div class="col-md-12">
 
-	<?php 
-		//foreach($funcionarios as $data) { 
+	<?php
+		//foreach($funcionarios as $data) {
 	?>
 	<?php //echo $data['id']; ?><br>
 	<?php //echo $data['nomeempresa']; ?><br>

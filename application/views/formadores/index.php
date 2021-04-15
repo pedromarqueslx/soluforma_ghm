@@ -1,13 +1,15 @@
 
+
 <div class="container-fluid bg-light">
     <div class="container">
-        <div class="row mb-4">
-            <div class="col-12">
-                <h3 class="my-4 text-primary">Registo de Formadores</h3>
+        <div class="row pt-3 pb-3">
+            <div class="col-12 col-md-6">
+                <h1>Registo de Formadores</h1>
             </div>
         </div>
     </div>
 </div>
+
 
 
 <div class="container">

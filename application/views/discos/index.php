@@ -1,16 +1,17 @@
+
 <div class="container-fluid bg-light">
-<div class="container">    
-<div class="row mb-4">
-<div class="col-md-12">
-<h3 class="my-4 text-primary">Infracções</h3>
+    <div class="container">
+        <div class="row pt-3 pb-3">
+            <div class="col-12 col-md-6">
+                <h1>Infracções</h1>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-</div>
-</div> 
 
 <div class="container">
 <div class="row">
-<div class="col-md-12"> 
+<div class="col-md-12">
 
 <div class="table-responsive">
 <table class="table table-striped" id="index_servicos">
@@ -60,7 +61,7 @@ $segment_1 = $this->uri->segment(1);
 $segment = $this->uri->segment(2);
 $segment_3 = $this->uri->segment(3);
 //echo $segment_3;
-?>    
+?>
 
 <a class="btn btn-primary" href="<?php echo site_url(); ?>/<?php echo 'discos'; ?>/create/<?php echo $segment_3; ?>" >Novo Relatório de Infracção</a>
 
@@ -106,7 +107,7 @@ $(document).ready(function() {
             "sLast":     "Último"
             }
             }
-            } 
+            }
             );
 
     // Apply the search
@@ -120,5 +121,5 @@ $(document).ready(function() {
             }
         } );
     } );
-} );         
+} );
 </script>
