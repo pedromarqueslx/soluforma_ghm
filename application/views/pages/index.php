@@ -24,6 +24,7 @@
     </div>
 </div>
 
+
 <div class="container">
     <div class="row">
         <?php
@@ -77,31 +78,23 @@
             echo '</div>';
         }
         ?>
-
     </div>
-
 </div>
 
+
 <div class="container">
-
     <div class="row">
-
         <?php
-
         if ($user['user_profile'] == 'Administrator') {
             echo '<div class="col-12">';
             echo '<div class="table-responsive">';
-
             echo '<table class="table table-striped">';
-
             echo '<thead>';
             echo '<tr>';
             echo '<th><h2>Últimas Formações de 2020</h2></th>';
             echo '</tr>';
             echo '</thead>';
-
             echo '<tbody>';
-
             foreach ($servicos2020 as $servicos_item) {
                 echo '<tr>';
                 echo '<td>';
@@ -142,31 +135,22 @@
             echo '</div>';
         }
         ?>
-
     </div>
-
 </div>
 
 <div class="container">
-
     <div class="row">
-
         <?php
-
         if ($user['user_profile'] == 'Administrator') {
             echo '<div class="col-12">';
             echo '<div class="table-responsive">';
-
             echo '<table class="table table-striped">';
-
             echo '<thead>';
             echo '<tr>';
             echo '<th><h2>Últimas Formações de 2019</h2></th>';
             echo '</tr>';
             echo '</thead>';
-
             echo '<tbody>';
-
             foreach ($servicos2019 as $servicos_item) {
                 echo '<tr>';
                 echo '<td>';
@@ -207,9 +191,7 @@
             echo '</div>';
         }
         ?>
-
     </div>
-
 </div>
 
 <div class="container">
