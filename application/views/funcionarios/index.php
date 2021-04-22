@@ -35,8 +35,6 @@ echo $message_display;
 <div class="col-md-12">
 
 
-
-
 <div class="table-responsive">
 <table class="table table-striped display" id="table_id">
 <thead>
