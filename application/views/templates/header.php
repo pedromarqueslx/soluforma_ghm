@@ -45,7 +45,6 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle
                     <?php if(($segment == "infracoes" && $segment_2 == 'index') || ($segment == "infracoes") || ($segment == "infracoes" && $segment_2 == "edit") || ($segment == "infracoes" && $segment_2 == "create")) { echo 'active'; } else {echo ""; } ?>
-                    <?php if(($segment == "categorias_profissionais" && $segment_2 == 'index') || ($segment == "categorias_profissionais") || ($segment == "categorias_profissionais" && $segment_2 == "edit") || ($segment == "categorias_profissionais" && $segment_2 == "create")) { echo 'active'; } else {echo ""; } ?>
                     <?php if(($segment == "conteudos" && $segment_2 == "index") || ($segment == "conteudos") || ($segment == "conteudos" &&$segment_2 == "edit") || ($segment == "conteudos" &&$segment_2 == "create") ) { echo 'active'; } else {echo ""; } ?>
                     <?php if(($segment == "formadores" && $segment_2 == 'index') || ($segment == "formadores") || ($segment == "formadores" && $segment_2 == "edit") || ($segment == "formadores" && $segment_2 == "create")) { echo 'active'; } else {echo ""; } ?>"
                        href="#" id="dropdown00" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formadores</a>
@@ -59,20 +58,22 @@
                         <?php if ($user['user_profile'] == 'Administrator') {
                             echo '<a class="dropdown-item" href="' . site_url() . '/infracoes/index/">Legislação de Infrações</a>';}
                         ?>
-                        <?php if ($user['user_profile'] == 'Administrator') {
-                            echo '<a class="dropdown-item" href="' . site_url() . '/categorias_profissionais/index/">Categorias Profissionais</a>';}
-                        ?>
                     </div>
                 </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle
+                    <?php if(($segment == "categorias_profissionais" && $segment_2 == 'index') || ($segment == "categorias_profissionais") || ($segment == "categorias_profissionais" && $segment_2 == "edit") || ($segment == "categorias_profissionais" && $segment_2 == "create")) { echo 'active'; } else {echo ""; } ?>
                     <?php if(($segment == "funcionarios" && $segment_2 == 'index') || ($segment == "funcionarios") || ($segment == "funcionarios" && $segment_2 == "edit") || ($segment == "funcionarios" && $segment_2 == "create")) { echo 'active'; } else {echo ""; } ?>"
                         href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Funcionários</a>
                     <div class="dropdown-menu shadow" aria-labelledby="dropdown01">
-                    <?php if ($user['user_profile'] == 'Administrator')
-                    {echo '<a class="dropdown-item" href="' . site_url() . '/funcionarios/index/">Funcionários</a>';}
-                    ?>
+                        <?php if ($user['user_profile'] == 'Administrator') {
+                            echo '<a class="dropdown-item" href="' . site_url() . '/funcionarios/index/">Funcionários</a>';}
+                        ?>
+                        <?php if ($user['user_profile'] == 'Administrator') {
+                            echo '<a class="dropdown-item" href="' . site_url() . '/categorias_profissionais/index/">Categorias Profissionais</a>';}
+                        ?>
+                    </div>
                 </li>
 
                 <li class="nav-item dropdown">

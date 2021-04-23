@@ -30,8 +30,6 @@ $segment_3 = $this->uri->segment(3);
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-
-
             <div class="table-responsive">
                 <table class="table table-striped display" id="table_id">
                     <thead>
@@ -91,7 +89,6 @@ $segment_3 = $this->uri->segment(3);
                             <td style="display: none;"><a href="<?php echo site_url('funcionarios/edit/'.$data->id); ?>"><?php echo $data->telefone_pessoal; ?></a></td>
                             <td style="display: none;"><a href="<?php echo site_url('funcionarios/edit/'.$data->id); ?>"><?php echo $data->email; ?></a></td>
                             <!---<td ><a href="<?php //echo site_url('funcionarios/edit/'.$data->id); ?>"><?php //echo $data->laboral; ?></a></td>-->
-
                         </tr>
                     <?php } ?>
                     </tbody>
@@ -126,11 +123,9 @@ $segment_3 = $this->uri->segment(3);
                     </tfoot>
                 </table>
             </div>
-
         </div>
         <!-- close row -->
     </div>
-
     <!-- close container -->
 </div>
 
