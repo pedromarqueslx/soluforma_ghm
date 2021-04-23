@@ -2,25 +2,25 @@
 
 class Utilizadores extends CI_Controller {
 
-        public function __construct()
-        {
-            parent::__construct();
-            $this->load->model('utilizadores_model');
-            $this->load->helper('url_helper');
-        }
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('utilizadores_model');
+        $this->load->helper('url_helper');
+    }
 
-        public function index()
-        {
+    public function index()
+    {
         $data['utilizadores'] = $this->utilizadores_model->get_utilizadores();
         $data['title'] = 'Utilizadores';
 
         $this->load->view('templates/header', $data);
         $this->load->view('utilizadores/index', $data);
         $this->load->view('templates/footer');
-        }
+    }
 
-        public function view($slug = NULL)
-        {
+    public function view($slug = NULL)
+    {
         $data['utilizadores_item'] = $this->utilizadores_model->get_utilizadores($slug);
 
         if (empty($data['utilizadores_item']))
@@ -33,34 +33,34 @@ class Utilizadores extends CI_Controller {
         $this->load->view('templates/header', $data);
         $this->load->view('utilizadores/view', $data);
         $this->load->view('templates/footer');
-        }
+    }
 
     public function create()
     {
-    $this->load->helper('form');
-    $this->load->library('form_validation');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
 
-    $data['title'] = 'Registo de Utilizador';
+        $data['title'] = 'Registo de Utilizador';
 
-    $this->form_validation->set_rules('title', 'Utilizador', 'required');
-    $this->form_validation->set_rules('password', 'Password', 'required');
-    $this->form_validation->set_rules('confirmar', 'Confirmar', 'required');
-    $this->form_validation->set_rules('email', 'E-mail', 'required');
+        $this->form_validation->set_rules('title', 'Utilizador', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('confirmar', 'Confirmar', 'required');
+        $this->form_validation->set_rules('email', 'E-mail', 'required');
 
 
-    if ($this->form_validation->run() === FALSE)
-    {
-        $this->load->view('templates/header', $data);
-        $this->load->view('utilizadores/create');
-        $this->load->view('templates/footer');
+        if ($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('templates/header', $data);
+            $this->load->view('utilizadores/create');
+            $this->load->view('templates/footer');
 
+        }
+        else
+        {
+            $this->utilizadores_model->set_utilizadores();
+            redirect( base_url() . 'index.php/utilizadores');
+        }
     }
-    else
-    {
-        $this->utilizadores_model->set_utilizadores();
-        redirect( base_url() . 'index.php/utilizadores');
-    }
-}
 
 
     public function edit()
@@ -78,10 +78,10 @@ class Utilizadores extends CI_Controller {
         $data['title'] = 'Editar Utilizador';
         $data['utilizadores_item'] = $this->utilizadores_model->get_utilizadores_by_id($id);
 
-    $this->form_validation->set_rules('title', 'Utilizador', 'required');
-    $this->form_validation->set_rules('password', 'Password', 'required');
-    $this->form_validation->set_rules('confirmar', 'Confirmar', 'required');
-    $this->form_validation->set_rules('email', 'E-mail', 'required');
+        $this->form_validation->set_rules('title', 'Utilizador', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('confirmar', 'Confirmar', 'required');
+        $this->form_validation->set_rules('email', 'E-mail', 'required');
 
         if ($this->form_validation->run() === FALSE)
         {
@@ -119,8 +119,6 @@ class Utilizadores extends CI_Controller {
         $this->load->helper('pdf_helper');
         $this->load->view('utilizadores/pdf');
     }
-
-
 
 
 }

@@ -49,7 +49,6 @@ class Users extends CI_Controller {
     }
 
     public function account() {
-
         if($this->session->userdata('isUserLoggedIn')) {
             // Go to user model getRows
             $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
@@ -99,20 +98,20 @@ class Users extends CI_Controller {
             if ($this->form_validation->run() == true) {
                 $con['returnType'] = 'single';
                 $con['conditions'] = array (
-                'email'=>$this->input->post('email'),
-                'password' => md5($this->input->post('password')),
-                'status' => '1'
-            );
-
-            if ($this->input->post('login_date')) {
-                $logdata = array (
-                'login_date' => $this->input->post('login_date'),
-                'user_id' => $this->input->post('email'),
+                    'email'=>$this->input->post('email'),
+                    'password' => md5($this->input->post('password')),
+                    'status' => '1'
                 );
-                $this->db->insert('logs', $logdata);
-            }
 
-            $checkLogin = $this->user->getRows($con);
+                if ($this->input->post('login_date')) {
+                    $logdata = array (
+                        'login_date' => $this->input->post('login_date'),
+                        'user_id' => $this->input->post('email'),
+                    );
+                    $this->db->insert('logs', $logdata);
+                }
+
+                $checkLogin = $this->user->getRows($con);
                 if ($checkLogin) {
                     $this->session->set_userdata('isUserLoggedIn',TRUE);
                     $this->session->set_userdata('userId',$checkLogin['id']);
@@ -130,25 +129,25 @@ class Users extends CI_Controller {
     public function create() {
         // check if user is loggedIn
         if ($this->session->userdata('isUserLoggedIn')) {
-        // Go to user model getRows
-        $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));//$data['artigos'] = $this->stock_material_model->get_artigos_oficina();
-        $data['title'] = 'Novo Registo';
-        $data['login_date'] = $this->user->login_date();
-        $this->form_validation->set_rules('name', 'Name', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|callback_email_check');
-        $this->form_validation->set_rules('password', 'Password', 'required');
-        $this->form_validation->set_rules('conf_password', 'Confirmar Password', 'required|matches[password]');
-        $this->form_validation->set_rules('user_profile', 'Perfil de Utilizador', 'required');
-        if ($this->form_validation->run() === FALSE) {
-        $this->load->view('templates/header', $data);
-        $this->load->view('users/create');
-        $this->load->view('templates/footer');
-        }else{
-        $this->user->set_users();
-        redirect( base_url() . 'index.php/users');
-        }}else{
-        // if user is NOT loggedIn redirect to homepage
-        redirect( base_url() );
+            // Go to user model getRows
+            $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));//$data['artigos'] = $this->stock_material_model->get_artigos_oficina();
+            $data['title'] = 'Novo Registo';
+            $data['login_date'] = $this->user->login_date();
+            $this->form_validation->set_rules('name', 'Name', 'required');
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email|callback_email_check');
+            $this->form_validation->set_rules('password', 'Password', 'required');
+            $this->form_validation->set_rules('conf_password', 'Confirmar Password', 'required|matches[password]');
+            $this->form_validation->set_rules('user_profile', 'Perfil de Utilizador', 'required');
+            if ($this->form_validation->run() === FALSE) {
+                $this->load->view('templates/header', $data);
+                $this->load->view('users/create');
+                $this->load->view('templates/footer');
+            }else{
+                $this->user->set_users();
+                redirect( base_url() . 'index.php/users');
+            }}else{
+            // if user is NOT loggedIn redirect to homepage
+            redirect( base_url() );
         }
     }
 
@@ -156,37 +155,37 @@ class Users extends CI_Controller {
         // check if user is loggedIn
         if ($this->session->userdata('isUserLoggedIn')) {
 
-        // Go to user model getRows
-        $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
-        $id = $this->uri->segment(3);
+            // Go to user model getRows
+            $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
+            $id = $this->uri->segment(3);
 
-        if (empty($id)) {
-            show_404();
-        }
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-        $data['title'] = 'Editar Utilizador';
-        $data['users'] = $this->user->get_users_by_id($id);
+            if (empty($id)) {
+                show_404();
+            }
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+            $data['title'] = 'Editar Utilizador';
+            $data['users'] = $this->user->get_users_by_id($id);
 
-        $this->form_validation->set_rules('name', 'Name', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-        $this->form_validation->set_rules('password', 'Nova Password', 'required');
-        $this->form_validation->set_rules('conf_password', 'Confirmar Nova Password', 'required|matches[password]');
-        $this->form_validation->set_rules('user_profile', 'Perfil de Utilizador', 'required');
+            $this->form_validation->set_rules('name', 'Name', 'required');
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+            $this->form_validation->set_rules('password', 'Nova Password', 'required');
+            $this->form_validation->set_rules('conf_password', 'Confirmar Nova Password', 'required|matches[password]');
+            $this->form_validation->set_rules('user_profile', 'Perfil de Utilizador', 'required');
 
-        if ($this->form_validation->run() === FALSE) {
-        $this->load->view('templates/header', $data);
-        $this->load->view('users/edit', $data);
-        $this->load->view('templates/footer');
-        } else {
-        $this->user->set_users_by_id($id);
-        redirect( base_url() . 'index.php/users');
-        }
+            if ($this->form_validation->run() === FALSE) {
+                $this->load->view('templates/header', $data);
+                $this->load->view('users/edit', $data);
+                $this->load->view('templates/footer');
+            } else {
+                $this->user->set_users_by_id($id);
+                redirect( base_url() . 'index.php/users');
+            }
 
         }else{
-       // if user is NOT loggedIn redirect to homepage
-       redirect( base_url() );
-       }
+            // if user is NOT loggedIn redirect to homepage
+            redirect( base_url() );
+        }
     }
 
     /*
@@ -222,19 +221,19 @@ class Users extends CI_Controller {
         // check if user is loggedIn
         if ($this->session->userdata('isUserLoggedIn')) {
 
-        $id = $this->uri->segment(3);
+            $id = $this->uri->segment(3);
 
-        if (empty($id)) {
-            show_404();
-        }
+            if (empty($id)) {
+                show_404();
+            }
 
-        $artigos_oficina_item = $this->user->get_users_by_id($id);
-        $this->user->delete_users($id);
-        redirect( base_url() . 'index.php/users');
+            $artigos_oficina_item = $this->user->get_users_by_id($id);
+            $this->user->delete_users($id);
+            redirect( base_url() . 'index.php/users');
 
         } else {
-           // if user is NOT loggedIn redirect to homepage
-           redirect( base_url() );
+            // if user is NOT loggedIn redirect to homepage
+            redirect( base_url() );
         }
     }
 
