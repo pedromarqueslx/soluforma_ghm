@@ -16360,7 +16360,7 @@ class TCPDF {
 		$html = preg_replace('/[\s]+<(tr|td|th|li|dt|dd)/', '<\\1', $html);
 		$html = preg_replace('/'.$this->re_space['p'].'+<(ul|ol|dl|br)/'.$this->re_space['m'], '<\\1', $html);
 		$html = preg_replace('/<\/(table|tr|td|th|blockquote|dd|dt|dl|div|dt|h1|h2|h3|h4|h5|h6|hr|li|ol|ul|p)>[\s]+</', '</\\1><', $html);
-		$html = preg_replace('/<\/(td|th)>/', '<marker style="font-size:0"/></\\1>', $html);
+		//$html = preg_replace('/<\/(td|th)>/', '<marker style="font-size:0"/></\\1>', $html);
 		$html = preg_replace('/<\/table>([\s]*)<marker style="font-size:0"\/>/', '</table>', $html);
 		$html = preg_replace('/'.$this->re_space['p'].'+<img/'.$this->re_space['m'], chr(32).'<img', $html);
 		$html = preg_replace('/<img([^\>]*)>[\s]+([^\<])/xi', '<img\\1>&nbsp;\\2', $html);
@@ -16902,10 +16902,10 @@ class TCPDF {
 					if (($dom[$key]['value'] == 'pre') OR ($dom[$key]['value'] == 'tt')) {
 						$dom[$key]['fontname'] = $this->default_monospaced_font;
 					}
-					if (!empty($dom[$key]['value']) AND ($dom[$key]['value'][0] == 'h') AND (intval($dom[$key]['value']{1}) > 0) AND (intval($dom[$key]['value']{1}) < 7)) {
+					if (!empty($dom[$key]['value']) AND ($dom[$key]['value'][0] == 'h') AND (intval($dom[$key]['value'][1]) > 0) AND (intval($dom[$key]['value'][1]) < 7)) {
 						// headings h1, h2, h3, h4, h5, h6
 						if (!isset($dom[$key]['attribute']['size']) AND !isset($dom[$key]['style']['font-size'])) {
-							$headsize = (4 - intval($dom[$key]['value']{1})) * 2;
+							$headsize = (4 - intval($dom[$key]['value'][1])) * 2;
 							$dom[$key]['fontsize'] = $dom[0]['fontsize'] + $headsize;
 						}
 						if (!isset($dom[$key]['style']['font-weight'])) {
