@@ -5,7 +5,7 @@ class Motoristas extends CI_Controller {
         parent::__construct();
         $this->load->model('user');
         $this->load->library('Pdf_Library');
-        $this->load->model('funcionarios_model');
+        $this->load->model('motoristas_model');
         $this->load->model('contactos_model');
         $this->load->model('servicos_model');
         $this->load->model('categorias_profissionais_model');
@@ -17,8 +17,8 @@ class Motoristas extends CI_Controller {
 
     public function pdf() {
         $id = $this->uri->segment(3);
-        $data['funcionarios'] = $this->funcionarios_model->select_funcionarios($id);
-        $this->load->view('funcionarios/pdf', $data);
+        $data['funcionarios'] = $this->motoristas_model->select_funcionarios($id);
+        $this->load->view('motoristas/pdf', $data);
     }
 
     public function index() {
@@ -28,24 +28,24 @@ class Motoristas extends CI_Controller {
             // Go to user model getRows
             $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
 
-            $data['funcionarios'] = $this->funcionarios_model->get_funcionarios();
+            //$data['funcionarios'] = $this->motoristas_model->get_funcionarios();
             //$data['title'] = 'Registos de Funcionarios';
             $config = array();
             $config['base_url'] = base_url("/index.php/funcionarios/index");
-            $config["total_rows"] = $this->funcionarios_model->record_count();
+            $config["total_rows"] = $this->motoristas_model->record_count();
             $config["per_page"] = '';
             $config["uri_segment"] = 3;
             $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-            $data["results"] = $this->funcionarios_model->fetch_funcionarios($config["per_page"], $page);
-            $config["total_rows"] = $this->funcionarios_model->record_count();
+            $data["results"] = $this->motoristas_model->fetch_funcionarios($config["per_page"], $page);
+            $config["total_rows"] = $this->motoristas_model->record_count();
 
             if (empty($config["total_rows"])) {
                 $this->load->view('templates/header', $data);
-                $this->load->view('funcionarios/view', $data);
+                $this->load->view('motoristas/view', $data);
                 $this->load->view('templates/footer');
             }else {
                 $this->load->view('templates/header', $data);
-                $this->load->view('funcionarios/index', $data);
+                $this->load->view('motoristas/index', $data);
                 $this->load->view('templates/footer');
             }
         } else {
@@ -58,7 +58,7 @@ class Motoristas extends CI_Controller {
     {
         // load model
         $search_data = $this->input->post('search_data');
-        $result = $this->funcionarios_model->get_autocomplete($search_data);
+        $result = $this->motoristas_model->get_autocomplete($search_data);
 
         if (!empty($result))
         {
@@ -95,11 +95,11 @@ class Motoristas extends CI_Controller {
 
             if ($this->form_validation->run() === FALSE){
                 $this->load->view('templates/header', $data);
-                $this->load->view('funcionarios/create');
+                $this->load->view('motoristas/create');
                 $this->load->view('templates/footer');
             } else {
-                $this->funcionarios_model->set_funcionarios();
-                redirect( base_url() . 'index.php/funcionarios');
+                $this->motoristas_model->set_funcionarios();
+                redirect( base_url() . 'index.php/motoristas');
             }
         } else {
             // if user is NOT loggedIn redirect to homepage
@@ -113,7 +113,7 @@ class Motoristas extends CI_Controller {
     public function title_check($str) {
         $con['returnType'] = 'count';
         $con['conditions'] = array('title'=>$str);
-        $checkEmail = $this->funcionarios_model->getRows($con);
+        $checkEmail = $this->motoristas_model->getRows($con);
         if($checkEmail > 0) {
             $this->form_validation->set_message('title_check', 'O Nome de Formando já foi introduzido.');
             return FALSE;
@@ -121,23 +121,6 @@ class Motoristas extends CI_Controller {
             return TRUE;
         }
     }
-
-    /*
-    * Existing empresa check during validation
-
-    public function empresa_check($str) {
-        $con['returnType'] = 'count';
-        $con['conditions'] = array('title'=>$str);
-        $checkEmail = $this->contactos_model->getRows($con);
-        if($checkEmail > 0){
-            $this->form_validation->set_message('empresa_check', 'O Nome da Empresa não esta registado.');
-            return FALSE;
-        }else {
-            return TRUE;
-        }
-    }
-     */
-
 
     public function edit() {
         // check if user is loggedIn
@@ -158,7 +141,7 @@ class Motoristas extends CI_Controller {
             $data['title'] = 'Editar Registo';
 
             $data['categorias_profissionais'] = $this->categorias_profissionais_model->get_categorias_profissionais();
-            $data['funcionarios_item'] = $this->funcionarios_model->get_funcionarios_by_id($id);
+            $data['funcionarios_item'] = $this->motoristas_model->get_funcionarios_by_id($id);
             $data['contactos'] = $this->contactos_model->get_contactos();
             // form validation
             $this->form_validation->set_rules('title', 'Nome', 'required');
@@ -167,11 +150,11 @@ class Motoristas extends CI_Controller {
             if ($this->form_validation->run() === FALSE)
             {
                 $this->load->view('templates/header', $data);
-                $this->load->view('funcionarios/edit', $data);
+                $this->load->view('motoristas/edit', $data);
                 $this->load->view('templates/footer');
             }else{
-                $this->funcionarios_model->set_funcionarios($id);
-                redirect( base_url() . 'index.php/funcionarios');
+                $this->motoristas_model->set_funcionarios($id);
+                redirect( base_url() . 'index.php/motoristas');
             }
         } else {
             // if user is NOT loggedIn redirect to homepage
@@ -190,13 +173,13 @@ class Motoristas extends CI_Controller {
             //show_404();
             //}
             $data['title'] = 'Total Serviços';
-            //$data['funcionarios'] = $this->funcionarios_model->get_funcionarios_by_title($id);
+            //$data['funcionarios'] = $this->motoristas_model->get_funcionarios_by_title($id);
             //$data['servicos'] = $this->servicos_model->get_servicos_by_title();
             $data['equipamentos_item'] = $this->servicos_model->get_servicos_by_title($id);
             $data['servicos'] = $this->servicos_model->get_servicos_by_title();
             $data['show_table'] = $this->view_table();
             $this->load->view('templates/header', $data);
-            $this->load->view('funcionarios/total', $data);
+            $this->load->view('motoristas/total', $data);
             $this->load->view('templates/footer');
         } else {
             // if user is NOT loggedIn redirect to homepage
@@ -206,7 +189,7 @@ class Motoristas extends CI_Controller {
 
     // function to get all artigos records :: COMMENT LATER
     public function view_table() {
-        $result = $this->funcionarios_model->show_all_data();
+        $result = $this->motoristas_model->show_all_data();
         if ($result != false) {
             return $result;
         }else{
@@ -225,10 +208,10 @@ class Motoristas extends CI_Controller {
                 show_404();
             }
 
-            $funcionarios_item = $this->funcionarios_model->get_funcionarios_by_id($id);
+            $funcionarios_item = $this->motoristas_model->get_funcionarios_by_id($id);
 
-            $this->funcionarios_model->delete_funcionarios($id);
-            redirect( base_url() . 'index.php/funcionarios');
+            $this->motoristas_model->delete_funcionarios($id);
+            redirect( base_url() . 'index.php/motoristas');
 
         } else {
             // if user is NOT loggedIn redirect to homepage
@@ -240,7 +223,7 @@ class Motoristas extends CI_Controller {
         // POST data
         $postData = $this->input->post();
         // get data
-        $data = $this->funcionarios_model->getFuncionarios($postData);
+        $data = $this->motoristas_model->getFuncionarios($postData);
         echo json_encode($data);
     }
 
@@ -249,7 +232,7 @@ class Motoristas extends CI_Controller {
         // POST data
         $postData = $this->input->post();
         // get data
-        $data = $this->funcionarios_model->getdata_demissao($postData);
+        $data = $this->motoristas_model->getdata_demissao($postData);
         echo json_encode($data);
     }
 

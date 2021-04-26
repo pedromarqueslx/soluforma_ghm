@@ -365,3 +365,79 @@
         } );
     } );
 </script>
+
+<script>
+    $(document).ready(function() {
+
+        // Setup - add a text input to each footer cell
+        $('#index_formacoes tfoot th').each( function () {
+            var title = $(this).text();
+            //$(this).html( '<input type="text" placeholder=" '+title+'" />' );
+            $(this).html( '<input type="text" placeholder="*"/>' );
+        } );
+
+        $('#index_formacoes').DataTable( {
+
+            dom: 'Blfrtip',
+            buttons: ['excel', 'print'],
+            order:[ 0, "desc"],
+            "language": {
+                "sProcessing":   "A processar...",
+                "sLengthMenu":   "Mostrar _MENU_ registos",
+                "sZeroRecords":  "Não foram encontrados resultados",
+                "sInfo":         "Mostrando de _START_ até _END_ de _TOTAL_ registos",
+                "sInfoEmpty":    "Mostrando de 0 até 0 de 0 registos",
+                "sInfoFiltered": "(filtrado de _MAX_ registos no total)",
+                "sInfoPostFix":  "",
+                "sSearch":       "Procurar:",
+                "sUrl":          "",
+                "oPaginate": {
+                    "sFirst":    "Primeiro",
+                    "sPrevious": "Anterior",
+                    "sNext":     "Seguinte",
+                    "sLast":     "Último"
+                }
+            }
+        } );
+
+        // Apply the search
+        table.columns().every( function () {
+            var that = this;
+            $( 'input', this.footer() ).on( 'keyup change', function () {
+                if ( that.search() !== this.value ) {
+                    that
+                        .search( this.value )
+                        .draw();
+                }
+            } );
+        } );
+    } );
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('#index_contactos').DataTable( {
+            dom: 'Blfrtip',
+            buttons: [
+                'excel', 'print'
+            ],
+            "language": {
+                "sProcessing":   "A processar...",
+                "sLengthMenu":   "Mostrar _MENU_ registos",
+                "sZeroRecords":  "Não foram encontrados resultados",
+                "sInfo":         "_START_ até _END_ de _TOTAL_ registos",
+                "sInfoEmpty":    "0 até 0 de 0 registos",
+                "sInfoFiltered": "(filtrado de _MAX_ registos no total)",
+                "sInfoPostFix":  "",
+                "sSearch":       "Procurar:",
+                "sUrl":          "",
+                "oPaginate": {
+                    "sFirst":    "Primeiro",
+                    "sPrevious": "Anterior",
+                    "sNext":     "Seguinte",
+                    "sLast":     "Último"
+                }
+            }
+        });
+    });
+</script>
