@@ -63,7 +63,7 @@
         </div>
         <div class="row m-5 justify-content-center">
             <div class="col text-center">
-                <p class="text-muted small">Soluforma, todos os direitos reservados &copy; 2018</p>
+                <p class="text-muted small">Soluforma Ltd., todos os direitos reservados &copy; 2018</p>
             </div>
         </div>
     </div>

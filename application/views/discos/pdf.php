@@ -1,4 +1,5 @@
 <?php
+ob_start();
 //============================================================+
 // File name   : example_001.php
 // Begin       : 2008-03-04
@@ -59,8 +60,8 @@ $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
 // set some language-dependent strings (optional)
 if (@file_exists(dirname(__FILE__).'/lang/pt.php')) {
-	require_once(dirname(__FILE__).'/lang/pt.php');
-	$pdf->setLanguageArray($l);
+    require_once(dirname(__FILE__).'/lang/pt.php');
+    $pdf->setLanguageArray($l);
 }
 
 // ---------------------------------------------------------
@@ -149,9 +150,9 @@ foreach ($q->result_array() as $row)
     {$display_none=''; }
 {
 
-$table_line_two .='<p style="line-height:2" '.$display_none.'><font color="#333333" align="left"><strong>'.$row['title'].'</strong></font></p>';
-$table_line_two .='<p style="line-height:2" '.$display_none.'><font color="#333333" align="left">'.$row['infracoes_infracoes'].'</font></p>';
-$table_line_two .='<p style="line-height:2" '.$display_none.' ><font color="#000" size="8" align="left">Registo do dia '.nl2br($discos['registo_do_dia']).'</font></p>';
+    $table_line_two .='<p style="line-height:2" '.$display_none.'><font color="#333333" align="left"><strong>'.$row['title'].'</strong></font></p>';
+    $table_line_two .='<p style="line-height:2" '.$display_none.'><font color="#333333" align="left">'.$row['infracoes_infracoes'].'</font></p>';
+    $table_line_two .='<p style="line-height:2" '.$display_none.' ><font color="#000" size="8" align="left">Registo do dia '.nl2br($discos['registo_do_dia']).'</font></p>';
 }
 
 // Select record
@@ -168,9 +169,9 @@ foreach ($q->result_array() as $row)
     {$display_none_1=''; }
 {
 
-$table_line_two .='<p style="line-height:2" '.$display_none_1.'><font color="#333333" align="left"><strong>'.$row['title'].'</strong></font></p>';
-$table_line_two .='<p style="line-height:2" '.$display_none_1.'><font color="#333333" align="left">'.$row['infracoes_infracoes'].'</font></p>';
-$table_line_two .='<p style="line-height:2" '.$display_none_1.' ><font color="#000" size="8" align="left">Registo do dia '.nl2br($discos['registo_do_dia_1']).'</font></p>';
+    $table_line_two .='<p style="line-height:2" '.$display_none_1.'><font color="#333333" align="left"><strong>'.$row['title'].'</strong></font></p>';
+    $table_line_two .='<p style="line-height:2" '.$display_none_1.'><font color="#333333" align="left">'.$row['infracoes_infracoes'].'</font></p>';
+    $table_line_two .='<p style="line-height:2" '.$display_none_1.' ><font color="#000" size="8" align="left">Registo do dia '.nl2br($discos['registo_do_dia_1']).'</font></p>';
 }
 
 // Select record
@@ -187,9 +188,9 @@ foreach ($q->result_array() as $row)
     {$display_none_2='';}
 {
 
-$table_line_two .='<p style="line-height:2" '.$display_none_2.'><font color="#333333" align="left"><strong>'.$row['title'].'</strong></font></p>';
-$table_line_two .='<p style="line-height:2" '.$display_none_2.'><font color="#333333" align="left">'.$row['infracoes_infracoes'].'</font></p>';
-$table_line_two .='<p style="line-height:2" '.$display_none_2.' ><font color="#000" size="8" align="left">Registo do dia '.nl2br($discos['registo_do_dia_2']).'</font></p>';
+    $table_line_two .='<p style="line-height:2" '.$display_none_2.'><font color="#333333" align="left"><strong>'.$row['title'].'</strong></font></p>';
+    $table_line_two .='<p style="line-height:2" '.$display_none_2.'><font color="#333333" align="left">'.$row['infracoes_infracoes'].'</font></p>';
+    $table_line_two .='<p style="line-height:2" '.$display_none_2.' ><font color="#000" size="8" align="left">Registo do dia '.nl2br($discos['registo_do_dia_2']).'</font></p>';
 }
 
 // Select record
@@ -206,9 +207,9 @@ foreach ($q->result_array() as $row)
     else
     {$display_none_3='';}
 {
-$table_line_two .='<p style="line-height:2"><font color="#333333" align="left" '.$display_none_3.'><strong>'.$row['title'].'</strong></font></p>';
-$table_line_two .='<p style="line-height:2"><font color="#333333" align="left" '.$display_none_3.'>'.$row['infracoes_infracoes'].'</font></p>';
-$table_line_two .='<p style="line-height:2"><font color="#000" size="8" align="left" '.$display_none_3.' >Registo do dia '.nl2br($discos['registo_do_dia_3']).'</font></p>';
+    $table_line_two .='<p style="line-height:2"><font color="#333333" align="left" '.$display_none_3.'><strong>'.$row['title'].'</strong></font></p>';
+    $table_line_two .='<p style="line-height:2"><font color="#333333" align="left" '.$display_none_3.'>'.$row['infracoes_infracoes'].'</font></p>';
+    $table_line_two .='<p style="line-height:2"><font color="#000" size="8" align="left" '.$display_none_3.' >Registo do dia '.nl2br($discos['registo_do_dia_3']).'</font></p>';
 }
 
 $pdf->writeHTMLCell(0, 0, '', '', $table_line_two, 0, 1, 0, true, 'C', true);
@@ -249,12 +250,12 @@ $table_four.='<th width="45%" style="border:0px solid #FFF" align="right">
 </th>';
 $table_four.='</tr>';
 
-	$table_four.='</table>';
+$table_four.='</table>';
 // Print text using writeHTMLCell()
 $pdf->writeHTMLCell(0, 0, '', '', $table_four, 0, 1, 0, true, 'C', true);
 
 // ---------------------------------------------------------
-
+ob_end_clean();
 //Close and output PDF document
 $pdf->Output($discos['id'].'_'.'certificado_formacao_'.$discos['nome_funcionario_servicos'].'_'.date("Y").'.pdf', 'I');
 
