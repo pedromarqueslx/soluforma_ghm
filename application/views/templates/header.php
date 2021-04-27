@@ -135,9 +135,9 @@
                     ?>
                 </li>
 
-                <li <?php if(($segment == "discos" && $segment_2 == 'index') || ($segment == "discos") || ($segment == "discos" && $segment_2 == "edit") || ($segment == "discos" && $segment_2 == "create")) { echo "class='nav-item active'"; } else {echo ""; } ?> >
+                <li <?php if(($segment == "relatorios" && $segment_2 == 'index') || ($segment == "relatorios") || ($segment == "relatorios" && $segment_2 == "edit") || ($segment == "relatorios" && $segment_2 == "create")) { echo "class='nav-item active'"; } else {echo ""; } ?> >
                     <?php if ($user['user_profile'] == 'Administrator')
-                    {echo '<a class="nav-link" href="' . site_url() . '/discos/index/">Discos</a>';}
+                    {echo '<a class="nav-link" href="' . site_url() . '/relatorios/index/">Relatórios</a>';}
                     ?>
                 </li>
 
