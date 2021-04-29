@@ -1,5 +1,8 @@
 <?php
-echo form_open('discos/create');
+//$empresas[] = null;
+?>
+<?php
+echo form_open('relatorios/create');
 ?>
     <div class="container-fluid bg-light">
         <div class="container">
@@ -18,24 +21,28 @@ echo form_open('discos/create');
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <label>Período de Análise Mensal *</label>
+                <label for="analiseMensal">Período de Análise Mensal *</label>
+<!--            <input type="month" class="form-control" id="analiseMensal" name="start" min="2021-01" max="2021-12" value="2021-01">-->
+                <input type="date" class="form-control" id="analiseMensal" name="periodo_analise" value="">
+
+<!--            <label>Período de Análise Mensal *</label>
                 <div class="control">
-                    <select class="form-control" name="periodo_analise" required>
-                        <option selected value="<?php //echo set_value('periodo-analise'); ?>">-- Período de Análise Mensal * --</option>
-                        <option value="Janeiro de <?php echo date('Y'); ?>">Janeiro de <?php echo date('Y'); ?></option>
-                        <option value="Fevereiro de <?php echo date('Y'); ?>">Fevereiro de <?php echo date('Y'); ?></option>
-                        <option value="Marco de <?php echo date('Y'); ?>">Março de <?php echo date('Y'); ?></option>
-                        <option value="Abril de  <?php echo date('Y'); ?>">Abril de <?php echo date('Y'); ?></option>
-                        <option value="Maio de <?php echo date('Y'); ?>">Maio de <?php echo date('Y'); ?></option>
-                        <option value="Junho de <?php echo date('Y'); ?>">Junho de <?php echo date('Y'); ?></option>
-                        <option value="Julho de <?php echo date('Y'); ?>">Julho de <?php echo date('Y'); ?></option>
-                        <option value="Agosto de <?php echo date('Y'); ?>">Agosto de <?php echo date('Y'); ?></option>
-                        <option value="Setembro de <?php echo date('Y'); ?>">Setembro de <?php echo date('Y'); ?></option>
-                        <option value="Outubro de <?php echo date('Y'); ?>">Outubro de <?php echo date('Y'); ?></option>
-                        <option value="Novembro de <?php echo date('Y'); ?>">Novembro de <?php echo date('Y'); ?></option>
-                        <option value="Dezembro de <?php echo date('Y'); ?>">Dezembro de <?php echo date('Y'); ?></option>
+                    <select type="month" class="form-control" name="periodo_analise" required>
+                        <option selected value="<?php /*//echo set_value('periodo-analise'); */?>">-- Período de Análise Mensal * --</option>
+                        <option value="<?php /*echo date('M Y'); */?>">Janeiro de <?php /*echo date('Y'); */?></option>
+                        <option value="<?php /*echo date('M Y'); */?>">Fevereiro de <?php /*echo date('Y'); */?></option>
+                        <option value="<?php /*echo date('M Y'); */?>">Março de <?php /*echo date('Y'); */?></option>
+                        <option value="<?php /*echo date('M Y'); */?>">Abril de <?php /*echo date('Y'); */?></option>
+                        <option value="<?php /*echo date('M Y'); */?>">Maio de <?php /*echo date('Y'); */?></option>
+                        <option value="<?php /*echo date('M Y'); */?>">Junho de <?php /*echo date('Y'); */?></option>
+                        <option value="<?php /*echo date('M Y'); */?>">Julho de <?php /*echo date('Y'); */?></option>
+                        <option value="<?php /*echo date('M Y'); */?>">Agosto de <?php /*echo date('Y'); */?></option>
+                        <option value="<?php /*echo date('M Y'); */?>">Setembro de <?php /*echo date('Y'); */?></option>
+                        <option value="Outubro de <?php /*echo date('Y'); */?>">Outubro de <?php /*echo date('Y'); */?></option>
+                        <option value="Novembro de <?php /*echo date('Y'); */?>">Novembro de <?php /*echo date('Y'); */?></option>
+                        <option value="Dezembro de <?php /*echo date('Y'); */?>">Dezembro de <?php /*echo date('Y'); */?></option>
                     </select>
-                </div>
+                </div>-->
                 <div class="small"><?php echo form_error('periodo_analise'); ?></div>
             </div>
 
@@ -43,8 +50,8 @@ echo form_open('discos/create');
                 <div class="control-group required all-20 small-100 tiny-100">
                     <label>Data da Análise *</label>
                     <div class="control">
-                        <input type="text" class="form-control" id="datepicker" name="data_servicos" value="" placeholder="Ano-Mês-Dia" onchange="formatar()" required>
-                        <input type="hidden" class="form-control" id="lblDataExtenso" name="lblDataExtenso" value="" >
+                        <input type="date" class="form-control" id="datepicker" name="data_analise" value="" placeholder="Ano-Mês-Dia" onchange="formatar()" required>
+                        <input type="" class="form-control" id="lblDataExtenso" name="lblDataExtenso" value="">
                         <div class="small"><?php echo form_error('data_servicos'); ?></div>
                     </div>
                 </div>
@@ -57,11 +64,25 @@ echo form_open('discos/create');
 
         <script language="JavaScript">
             function toggle(source) {
-                checkboxes = document.getElementsByName('title');
+                //checkboxes = document.querySelectorAll('title[]'+'n_empresa[]');
+                let checkboxes = document.querySelectorAll('[name="title[]"], [name="n_empresa[]"]');
                 for(var i=0, n=checkboxes.length;i<n;i++) {
                     checkboxes[i].checked = source.checked;
                 }
             }
+
+            function check_uncheck_checkbox(isChecked) {
+                if(isChecked) {
+                    $('input[name="title[]"]').each(function() {
+                        this.checked = true;
+                    });
+                } else {
+                    $('input[name="title[]"]').each(function() {
+                        this.checked = false;
+                    });
+                }
+            }
+
         </script>
 
         <div class="row">
@@ -73,12 +94,14 @@ echo form_open('discos/create');
                     </div>
                     <?php
                     $i = 0;
-                    foreach($contactos as $contacto) {
+                    foreach($empresas as $empresa) {
                         $i ++;
                         ?>
                         <div class="form-check pt-2 pb-2">
-                            <input type="checkbox" name="title" class="form-check-input" id="selectCheckBox<?php echo $i ?>">
-                            <label class="form-check-label" for="selectCheckBox<?php echo $i ?>"><?php echo $contacto['title']; ?></label>
+                            <input type="checkbox" name="title[]" value="<?php echo $empresa['empresa']; ?>" class="form-check-input selectCheckBox<?php echo $i ?>" id="">
+                            <label class="form-check-label" for="selectCheckBox<?php echo $i ?>"><?php echo $empresa['empresa']; ?></label>
+
+                            <input type="checkbox" name="n_empresa[]" value="<?php echo $empresa['n_cliente']; ?>" class="selectCheckBox<?php echo $i ?>" id="">
                         </div>
                         <?php
                     }
@@ -112,12 +135,10 @@ echo form_open('discos/create');
         var data = $('#datepicker').datepicker('getDate');
         var extenso;
         data = new Date(data);
-
         var day = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"][data.getDay()];
         var date = data.getDate();
         var month = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"][data.getMonth()];
         var year = data.getFullYear();
-
         //console.log(data);
         document.getElementById('lblDataExtenso').setAttribute('value', `${date} de ${month} de ${year}`);
     }

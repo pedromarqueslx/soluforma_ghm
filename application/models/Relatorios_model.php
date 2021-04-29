@@ -102,72 +102,39 @@ class Relatorios_model extends CI_Model {
         return $query->row_array();
     }
 
-    public function set_servicos($data) {
+    public function set_relatorios($data) {
         $this->load->helper('url');
-        $slug = url_title($this->input->post('title'), 'dash', TRUE);
-
-        $empresa_id_servicos = $this->input->post('empresa_id_servicos'); //array of empresa_id_servicos
-        $formandos_servicos = $this->input->post('formandos_servicos'); //array of formandos_servicos
-        $nome_funcionario_servicos = $this->input->post('nome_funcionario_servicos'); //array of nome_funcionario_servicos
-        $naturalidade_servicos = $this->input->post('naturalidade_servicos'); //array of naturalidade_servicos
-        $data_nascimento_servicos = $this->input->post('data_nascimento_servicos'); //array of data_nascimento_servicos
-        $nacionalidade_servicos = $this->input->post('nacionalidade_servicos'); //array of nacionalidade_servicos
-        $doc_identificacao_servicos = $this->input->post('doc_identificacao_servicos'); //array of doc_identificacao_servicos
-        $validade_identificacao_servicos = $this->input->post('validade_identificacao_servicos'); //array of validade_identificacao_servicos
-        $registo_do_dia = $this->input->post('registo_do_dia'); //array
-        $registo_do_dia_1 = $this->input->post('registo_do_dia_1'); //array
-        $registo_do_dia_2 = $this->input->post('registo_do_dia_2'); //array
-        $registo_do_dia_3 = $this->input->post('registo_do_dia_3'); //array
-        $id_infracao = $this->input->post('id_infracao'); //array
-        $id_infracao_1 = $this->input->post('id_infracao_1'); //array
-        $id_infracao_2 = $this->input->post('id_infracao_2'); //array
-        $id_infracao_3 = $this->input->post('id_infracao_3'); //array
+        $title = $this->input->post('title'); //array
+        $n_empresa = $this->input->post('n_empresa'); //array
 
         $data = array();
 
-        for($i = 0; $i < count($formandos_servicos); $i++) {
+        //for($i = 0; $i < count($title); $i++) {
+            foreach ($title as $i => $item) {
+
             $data[] = array(
-                'title' => $this->input->post('title'),
-                'slug' => $slug,
-                'area_servicos' => $this->input->post('area_servicos'),
-                'periodo_analise' => $this->input->post('periodo_analise'),
-                'formadores_servicos' => $this->input->post('formadores_servicos'),
-                'data_servicos' => $this->input->post('data_servicos'),
-                'lblDataExtenso' => $this->input->post('lblDataExtenso'),
-                'nome_servicos' => $this->input->post('nome_servicos'),
-                'horas_servicos' => $this->input->post('horas_servicos'),
-                'local_formacao_servicos' => $this->input->post('local_formacao_servicos'),
-                'conteudos_servicos' => $this->input->post('conteudos_servicos'),
-                'anotacoes_servicos' => $this->input->post('anotacoes_servicos'),
-                'categoria_servicos' => $this->input->post('categoria_servicos'),
-                'visivel_servicos' => $this->input->post('visivel_servicos'),
-                'utilizador_servicos' => $this->input->post('utilizador_servicos'),
-                'criado_servicos' => $this->input->post('criado_servicos'),
-                'modificado_servicos' => $this->input->post('modificado_servicos'),
-                'empresa_id_servicos' => $empresa_id_servicos[$i],
-                'formandos_servicos' => $formandos_servicos[$i],
-                'nome_funcionario_servicos' => $nome_funcionario_servicos[$i],
-                'naturalidade_servicos' => $naturalidade_servicos[$i],
-                'data_nascimento_servicos' => $data_nascimento_servicos[$i],
-                'nacionalidade_servicos' => $nacionalidade_servicos[$i],
-                'doc_identificacao_servicos' => $doc_identificacao_servicos[$i],
-                'validade_identificacao_servicos' => $validade_identificacao_servicos[$i],
-                'registo_do_dia' => $registo_do_dia[$i],
-                'registo_do_dia_1' => $registo_do_dia_1[$i],
-                'registo_do_dia_2' => $registo_do_dia_2[$i],
-                'registo_do_dia_3' => $registo_do_dia_3[$i],
-                'id_infracao' => $id_infracao[$i],
-                'id_infracao_1' => $id_infracao_1[$i],
-                'id_infracao_2' => $id_infracao_2[$i],
-                'id_infracao_3' => $id_infracao_3[$i],
+            'periodo_analise' => $this->input->post('periodo_analise'),
+            'data_analise' => $this->input->post('data_analise'),
+            'lblDataExtenso' => $this->input->post('lblDataExtenso'),
+
+            'categoria_servicos' => $this->input->post('categoria_servicos'),
+            'visivel_servicos' => $this->input->post('visivel_servicos'),
+            'utilizador_servicos' => $this->input->post('utilizador_servicos'),
+            'criado_servicos' => $this->input->post('criado_servicos'),
+            'modificado_servicos' => $this->input->post('modificado_servicos'),
+
+            'title' => $title[$i],
+            'n_empresa' => $_POST['title'],
+
             );
         }
+
         if ($data > 0) {
-            return $this->db->insert_batch('relatorios', $data);
-            //echo '<pre>';
-            //print_r($data);
-            //die();
-            //echo '</pre>';
+            //return $this->db->insert_batch('relatorios', $data);
+            echo '<pre>';
+            print_r($data);
+            die();
+            echo '</pre>';
         }
     }
 
@@ -183,7 +150,6 @@ class Relatorios_model extends CI_Model {
             'data_servicos' => $this->input->post('data_servicos'),
             'nome_servicos' => $this->input->post('nome_servicos'),
             'horas_servicos' => $this->input->post('horas_servicos'),
-            'conteudos_servicos' => $this->input->post('conteudos_servicos'),
             'formandos_servicos' => $this->input->post('formandos_servicos'),
             'anotacoes_servicos' => $this->input->post('anotacoes_servicos'),
             'categoria_servicos' => $this->input->post('categoria_servicos'),
@@ -252,26 +218,31 @@ class Relatorios_model extends CI_Model {
         }
     }
 
-    // Get cities
-    /*function getContactos(){
-        $response = array();
-        // Select record
-        $this->db->select('*');
-        $q = $this->db->get('contactos');
-        $response = $q->result_array();
-        return $response;
+    public function get_funcionarios() {
+        $where = "cargo='Motorista Pesados' AND n_cliente !='Saiu'";
+        $this->db->distinct();
+        $this->db->select('empresa');
+        $this->db->select('n_cliente');
+        $query = $this->db->where($where)->get("funcionarios");
+        return $query->result_array();
     }
-  // Get City departments
-  function getFuncionarios($postData){
-    $response = array();
-    // Select record
-    $this->db->select('id,title');
-    $this->db->where('empresa', $postData['empresa']);
-    $q = $this->db->get('funcionarios');
-    $response = $q->result_array();
-    return $response;
-  }
-  */
+
+    // Get Empresas de Motoristas Pessados
+    public function fetch_funcionarios($limit, $start) {
+        $where = "cargo='Motorista Pesados' AND n_cliente !='Saiu'";
+        //$this->db->limit($limit, $start);
+        $this->db->order_by("id", "desc");
+        $query = $this->db->where($where)->get("funcionarios");
+
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;
+    }
+
     // Get Funcionarios
     function getEmpresas($postData) {
         $response = array();
@@ -281,18 +252,6 @@ class Relatorios_model extends CI_Model {
         $this->db->where('empresa', $postData['empresa']);
         $this->db->order_by('title', 'ASC');
         $q = $this->db->get('funcionarios');
-        $response = $q->result_array();
-        return $response;
-    }
-
-    // Get Conteudos
-    function getConteudos($postData) {
-        $response = array();
-        // Select record
-        $this->db->select('id,title,nome_conteudos,horas_conteudos,conteudos_conteudos');
-        $this->db->where('title', $postData['title']);
-        $this->db->limit(1);  // Produces: LIMIT 1
-        $q = $this->db->get('conteudos');
         $response = $q->result_array();
         return $response;
     }
@@ -310,18 +269,6 @@ class Relatorios_model extends CI_Model {
     }
 
     // Get Conteudos by ID
-    function getConteudosbyID($postData) {
-        $response = array();
-        // Select record
-        $this->db->select('id,title,nome_conteudos,horas_conteudos,conteudos_conteudos');
-        $this->db->where('id', $postData['id']);
-        $this->db->limit(1);  // Produces: LIMIT 1
-        $q = $this->db->get('conteudos');
-        $response = $q->result_array();
-        return $response;
-    }
-
-    // Get Conteudos by ID
     function getInfracoesbyID($postData) {
         $response = array();
         // Select record
@@ -333,4 +280,4 @@ class Relatorios_model extends CI_Model {
         return $response;
     }
 }
-?>
+

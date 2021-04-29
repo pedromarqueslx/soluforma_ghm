@@ -62,12 +62,6 @@ class Motoristas_model extends CI_Model {
         return $this->db->get('funcionarios', 10)->result();
     }
 
-/*	public function get_funcionarios()
-	{
-        $query = $this->db->get('funcionarios');
-        return $query->result_array();
-	}*/
-
     public function get_funcionarios_by_id($funcionario_id = 0)
     {
         if ($funcionario_id === 0)
@@ -155,7 +149,6 @@ class Motoristas_model extends CI_Model {
     }
 
     public function fetch_funcionarios($limit, $start) {
-
         $where = "cargo='Motorista Pesados' AND n_cliente !='Saiu'";
         $this->db->limit($limit, $start);
         $this->db->order_by("id", "desc");

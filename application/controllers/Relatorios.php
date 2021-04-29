@@ -8,33 +8,26 @@ class Relatorios extends CI_Controller {
         $this->load->library('Pdf_Library');
         $this->load->model('relatorios_model');
         $this->load->model('funcionarios_model');
+        $this->load->model('motoristas_model');
         $this->load->model('contactos_model');
-        //$this->load->model('conteudos_model');
         $this->load->model('infracoes_model');
-        //$this->load->model('formadores_model');
         $this->load->helper("url");
         $this->load->helper('url_helper');
     }
 
     public function pdf() {
         $id = $this->uri->segment(3);
-        //$id_infracoes = $discos['id_infracao'];
-        $data['discos'] = $this->relatorios_model->get_servicos_by_id($id);
-        //$data['servicos_item'] = $this->relatorios_model->get_servicos_by_id($id);
+        $data['relatorios'] = $this->relatorios_model->get_servicos_by_id($id);
         $data['funcionarios'] = $this->funcionarios_model->get_funcionarios_by_id($id);
-        //$data['conteudos'] = $this->conteudos_model->get_conteudos_by_id($id);
-        //$data['infracoes'] = $this->infracoes_model->get_infracoes_by_id($id_infracoes);
-        $this->load->view('discos/pdf', $data);
+        $this->load->view('relatorios/pdf', $data);
     }
 
     public function pdf2() {
         $id = $this->uri->segment(3);
-        $data['discos'] = $this->relatorios_model->get_servicos_by_id($id);
-        //$data['servicos_item'] = $this->relatorios_model->get_servicos_by_id($id);
+        $data['relatorios'] = $this->relatorios_model->get_servicos_by_id($id);
         $data['funcionarios'] = $this->funcionarios_model->get_funcionarios_by_id($id);
-        //$data['conteudos'] = $this->conteudos_model->get_conteudos_by_id($id);
         $data['infracoes'] = $this->infracoes_model->get_infracoes_by_id($id);
-        $this->load->view('discos/pdf2', $data);
+        $this->load->view('relatorios/pdf2', $data);
     }
 
     public function index() {
@@ -44,7 +37,7 @@ class Relatorios extends CI_Controller {
             $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
             $data['title'] = 'Registos de Serviços';
             $config = array();
-            $config['base_url'] = base_url("/index.php/discos/index");
+            $config['base_url'] = base_url("/index.php/relatorios/index");
             $config["total_rows"] = $this->relatorios_model->record_count();
             $config["per_page"] = '';
             $config["uri_segment"] = 3;
@@ -59,11 +52,11 @@ class Relatorios extends CI_Controller {
             $config["total_rows"] = $this->relatorios_model->record_count();
             if (empty($config["total_rows"])) {
                 $this->load->view('templates/header', $data);
-                $this->load->view('discos/view', $data);
+                $this->load->view('relatorios/view', $data);
                 $this->load->view('templates/footer');
             }else{
                 $this->load->view('templates/header', $data);
-                $this->load->view('discos/index', $data);
+                $this->load->view('relatorios/index', $data);
                 $this->load->view('templates/footer');
             }
         }else{
@@ -117,33 +110,26 @@ class Relatorios extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-
     public function create() {
         // check if user is loggedIn
         if ($this->session->userdata('isUserLoggedIn')) {
             // Go to user model getRows
             $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
-            $data['title'] = 'Novo Registo';
-
-            //$data['conteudos'] = $this->conteudos_model->get_conteudos();
-            $data['infracoes'] = $this->infracoes_model->get_infracoes();
-            //$data['formadores'] = $this->formadores_model->get_formadores();
-            $data['contactos'] = $this->contactos_model->get_contactos();
-            $data['servicos'] = $this->relatorios_model->get_servicos();
+            $data['empresas'] = $this->relatorios_model->get_funcionarios();
             $data['login_date'] = $this->user->login_date();
+
             //form validation
-            $this->form_validation->set_rules('title', 'Empresa', 'required');
-            $this->form_validation->set_rules('data_servicos', 'Data da Formação', 'required');
             $this->form_validation->set_rules('periodo_analise', 'Período de Análise Mensal', 'required');
-            //$this->form_validation->set_rules('formandos_servicos[]', 'Funcionários', 'required');
+            $this->form_validation->set_rules('data_analise', 'Data da Formação', 'required');
+            $this->form_validation->set_rules('title[]', 'Empresa', 'required');
 
             if ($this->form_validation->run() === FALSE) {
                 $this->load->view('templates/header', $data);
-                $this->load->view('discos/create');
+                $this->load->view('relatorios/create');
                 $this->load->view('templates/footer');
             } else {
-                $this->relatorios_model->set_servicos($data);
-                redirect( base_url() . 'index.php/discos/index/');
+                $this->relatorios_model->set_relatorios($data);
+                redirect( base_url() . 'index.php/relatorios/index/');
             }
         } else {
             // if user is NOT loggedIn redirect to homepage
@@ -206,14 +192,12 @@ class Relatorios extends CI_Controller {
         echo json_encode($data);
     }
 
-
     public function edit() {
         // check if user is loggedIn
         if ($this->session->userdata('isUserLoggedIn')) {
             // Go to user model getRows
             $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
             $id = $this->uri->segment(3);
-
             if (empty($id)) {show_404();}
             $data['title'] = 'Editar Registo';
             $data['servicos_item'] = $this->relatorios_model->get_servicos_by_id($id);
@@ -227,17 +211,16 @@ class Relatorios extends CI_Controller {
 
             if ($this->form_validation->run() === FALSE) {
                 $this->load->view('templates/header', $data);
-                $this->load->view('discos/edit', $data);
+                $this->load->view('relatorios/edit', $data);
                 $this->load->view('templates/footer');
             }else{
                 $this->relatorios_model->set_servicos_id($id);
-                redirect( base_url() . 'index.php/discos/index/');
+                redirect( base_url() . 'index.php/relatorios/index/');
             }}else{
             // if user is NOT loggedIn redirect to homepage
             redirect( base_url() );
         }
     }
-
 
     public function total() {
         // check if user is loggedIn
@@ -268,7 +251,7 @@ class Relatorios extends CI_Controller {
         }
         $servicos_item = $this->relatorios_model->get_servicos_by_id($id);
         $this->relatorios_model->delete_servicos($id);
-        redirect( base_url() . 'index.php/discos');
+        redirect( base_url() . 'index.php/relatorios');
     }
 
     // function to get all artigos records :: COMMENT LATER
@@ -312,4 +295,4 @@ class Relatorios extends CI_Controller {
         $this->load->view('templates/footer');
     }
 }
-?>
+

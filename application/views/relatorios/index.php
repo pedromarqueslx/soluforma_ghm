@@ -11,7 +11,7 @@ $segment_3 = $this->uri->segment(3);
                 <h1>Infracções</h1>
             </div>
             <div class="col-12 col-md-6 text-right">
-                <a class="btn btn-success mx-auto" href="<?php echo site_url(); ?>/<?php echo 'discos'; ?>/create/<?php echo $segment_3; ?>" >Novo Relatório de Infracção</a>
+                <a class="btn btn-success mx-auto" href="<?php echo site_url(); ?>/<?php echo 'relatorios'; ?>/create/<?php echo $segment_3; ?>" >Novo Relatório de Infracção</a>
             </div>
         </div>
     </div>

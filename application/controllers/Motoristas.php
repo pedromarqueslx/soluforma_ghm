@@ -27,14 +27,10 @@ class Motoristas extends CI_Controller {
 
             // Go to user model getRows
             $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
-
-            //$data['funcionarios'] = $this->motoristas_model->get_funcionarios();
-            //$data['title'] = 'Registos de Funcionarios';
             $config = array();
             $config['base_url'] = base_url("/index.php/funcionarios/index");
-            $config["total_rows"] = $this->motoristas_model->record_count();
             $config["per_page"] = '';
-            $config["uri_segment"] = 3;
+            //$config["uri_segment"] = 3;
             $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
             $data["results"] = $this->motoristas_model->fetch_funcionarios($config["per_page"], $page);
             $config["total_rows"] = $this->motoristas_model->record_count();
