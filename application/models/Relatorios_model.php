@@ -104,37 +104,40 @@ class Relatorios_model extends CI_Model {
 
     public function set_relatorios($data) {
         $this->load->helper('url');
-        $title = $this->input->post('title'); //array
-        $n_empresa = $this->input->post('n_empresa'); //array
-
+        $index = $this->input->post('index');
+        $title = $this->input->post('title');
+        $n_empresa = $this->input->post('n_empresa');
+        /*
+        echo '<pre>';
+        var_dump($title);
+        var_dump($n_empresa);
+        echo '</pre>';
+        */
         $data = array();
-
-        //for($i = 0; $i < count($title); $i++) {
-            foreach ($title as $i => $item) {
-
+        //for($i = 0; $i < count($title); $i++ ) {
+        foreach($index as $selected) {
             $data[] = array(
             'periodo_analise' => $this->input->post('periodo_analise'),
             'data_analise' => $this->input->post('data_analise'),
             'lblDataExtenso' => $this->input->post('lblDataExtenso'),
-
             'categoria_servicos' => $this->input->post('categoria_servicos'),
             'visivel_servicos' => $this->input->post('visivel_servicos'),
             'utilizador_servicos' => $this->input->post('utilizador_servicos'),
             'criado_servicos' => $this->input->post('criado_servicos'),
             'modificado_servicos' => $this->input->post('modificado_servicos'),
-
-            'title' => $title[$i],
-            'n_empresa' => $_POST['title'],
-
+            //'index' => $selected,
+            'title' => $title[$selected],
+            'n_empresa' => $n_empresa[$selected],
+            'numero_empresas' => count($index),
             );
         }
 
         if ($data > 0) {
-            //return $this->db->insert_batch('relatorios', $data);
-            echo '<pre>';
+            return $this->db->insert_batch('relatorios', $data);
+/*          echo '<pre>';
             print_r($data);
             die();
-            echo '</pre>';
+            echo '</pre>';*/
         }
     }
 

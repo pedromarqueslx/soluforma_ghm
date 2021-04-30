@@ -122,10 +122,39 @@ class Relatorios extends CI_Controller {
             $this->form_validation->set_rules('periodo_analise', 'Período de Análise Mensal', 'required');
             $this->form_validation->set_rules('data_analise', 'Data da Formação', 'required');
             $this->form_validation->set_rules('title[]', 'Empresa', 'required');
+            $this->form_validation->set_rules('index[]', 'Empresa', 'required');
 
             if ($this->form_validation->run() === FALSE) {
                 $this->load->view('templates/header', $data);
                 $this->load->view('relatorios/create');
+                $this->load->view('templates/footer');
+            } else {
+                $this->relatorios_model->set_relatorios($data);
+                redirect( base_url() . 'index.php/relatorios/index/');
+            }
+        } else {
+            // if user is NOT loggedIn redirect to homepage
+            redirect( base_url() );
+        }
+    }
+
+    public function createreport() {
+        // check if user is loggedIn
+        if ($this->session->userdata('isUserLoggedIn')) {
+            // Go to user model getRows
+            $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
+            $data['empresas'] = $this->relatorios_model->get_funcionarios();
+            $data['login_date'] = $this->user->login_date();
+
+            //form validation
+            $this->form_validation->set_rules('periodo_analise', 'Período de Análise Mensal', 'required');
+            $this->form_validation->set_rules('data_analise', 'Data da Formação', 'required');
+            $this->form_validation->set_rules('title[]', 'Empresa', 'required');
+            $this->form_validation->set_rules('index[]', 'Empresa', 'required');
+
+            if ($this->form_validation->run() === FALSE) {
+                $this->load->view('templates/header', $data);
+                $this->load->view('relatorios/createreport');
                 $this->load->view('templates/footer');
             } else {
                 $this->relatorios_model->set_relatorios($data);

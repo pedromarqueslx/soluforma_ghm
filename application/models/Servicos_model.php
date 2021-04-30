@@ -4,9 +4,9 @@ class Servicos_model extends CI_Model {
 
 public function __construct() {
     $this->load->database();
-    $this->userTbl = 'servicos';   
+    $this->userTbl = 'servicos';
     $this->userTbl = 'contactos';
-    $this->userTbl = 'funcionarios';    
+    $this->userTbl = 'funcionarios';
 }
 
 public function select_servicos($id = 0) {
@@ -21,14 +21,14 @@ public function select_servicos($id = 0) {
 function getRows($params = array()) {
     $this->db->select('*');
     $this->db->from($this->userTbl);
-    
+
     //fetch data by conditions
     if (array_key_exists("conditions",$params)) {
     foreach ($params['conditions'] as $key => $value) {
         $this->db->where($key,$value);
     }
     }
-    
+
     if (array_key_exists("id",$params)) {
     $this->db->where('id',$params['id']);
     $query = $this->db->get();
@@ -63,7 +63,7 @@ public function get_autocomplete_create($search_data) {
     $this->db->select('title, id');
     $this->db->like('title', $search_data);
     return $this->db->where('visivel_cliente', '1')->where('categoria_cliente', '1')->get('contactos', 10)->result();
-}    
+}
 
 public function get_servicos($slug = FALSE) {
     if ($slug === FALSE) {
@@ -99,7 +99,7 @@ public function get_servicos_by_title($id = 0) {
     }
     $query = $this->db->get_where('servicos', array('title' => $id));
     return $query->row_array();
-}    
+}
 
 public function set_servicos($data) {
     $this->load->helper('url');
@@ -108,14 +108,14 @@ public function set_servicos($data) {
     $empresa_id_servicos = $this->input->post('empresa_id_servicos'); //array of empresa_id_servicos
     $formandos_servicos = $this->input->post('formandos_servicos'); //array of formandos_servicos
     $nome_funcionario_servicos = $this->input->post('nome_funcionario_servicos'); //array of nome_funcionario_servicos
-    $naturalidade_servicos = $this->input->post('naturalidade_servicos'); //array of naturalidade_servicos 
+    $naturalidade_servicos = $this->input->post('naturalidade_servicos'); //array of naturalidade_servicos
     $data_nascimento_servicos = $this->input->post('data_nascimento_servicos'); //array of data_nascimento_servicos
-    $nacionalidade_servicos = $this->input->post('nacionalidade_servicos'); //array of nacionalidade_servicos  
-    $doc_identificacao_servicos = $this->input->post('doc_identificacao_servicos'); //array of doc_identificacao_servicos  
+    $nacionalidade_servicos = $this->input->post('nacionalidade_servicos'); //array of nacionalidade_servicos
+    $doc_identificacao_servicos = $this->input->post('doc_identificacao_servicos'); //array of doc_identificacao_servicos
     $validade_identificacao_servicos = $this->input->post('validade_identificacao_servicos'); //array of validade_identificacao_servicos
 
     $data = array();
-        
+
         //if(!empty($_POST['formandos_servicos'])) {
         for($i = 0; $i < count($formandos_servicos); $i++) {
         //foreach ($_POST['formandos_servicos'] as $checkbox) {
@@ -123,13 +123,13 @@ public function set_servicos($data) {
             'title' => $this->input->post('title'),
             'slug' => $slug,
             'area_servicos' => $this->input->post('area_servicos'),
-            
+
             'formadores_servicos' => $this->input->post('formadores_servicos'),
             'data_servicos' => $this->input->post('data_servicos'),
-            'lblDataExtenso' => $this->input->post('lblDataExtenso'),            
-            'nome_servicos' => $this->input->post('nome_servicos'), 
+            'lblDataExtenso' => $this->input->post('lblDataExtenso'),
+            'nome_servicos' => $this->input->post('nome_servicos'),
             'horas_servicos' => $this->input->post('horas_servicos'),
-            'local_formacao_servicos' => $this->input->post('local_formacao_servicos'),            
+            'local_formacao_servicos' => $this->input->post('local_formacao_servicos'),
             'conteudos_servicos' => $this->input->post('conteudos_servicos'),
             'anotacoes_servicos' => $this->input->post('anotacoes_servicos'),
             'categoria_servicos' => $this->input->post('categoria_servicos'),
@@ -145,10 +145,9 @@ public function set_servicos($data) {
             'data_nascimento_servicos' => $data_nascimento_servicos[$i],
             'nacionalidade_servicos' => $nacionalidade_servicos[$i],
             'doc_identificacao_servicos' => $doc_identificacao_servicos[$i],
-            'validade_identificacao_servicos' => $validade_identificacao_servicos[$i],                                    
-            );    
-        }        
-        //}
+            'validade_identificacao_servicos' => $validade_identificacao_servicos[$i],
+            );
+        }
 
 
     if ($data > 0) {
@@ -156,7 +155,7 @@ public function set_servicos($data) {
     //echo '<pre>';
     //print_r($data);
     //die();
-    //echo '</pre>';   
+    //echo '</pre>';
     }
 }
 
@@ -170,7 +169,7 @@ public function set_servicos_id($id = 0) {
     'conteudos_servicos' => $this->input->post('conteudos_servicos'),
     'formadores_servicos' => $this->input->post('formadores_servicos'),
     'data_servicos' => $this->input->post('data_servicos'),
-    'nome_servicos' => $this->input->post('nome_servicos'), 
+    'nome_servicos' => $this->input->post('nome_servicos'),
     'horas_servicos' => $this->input->post('horas_servicos'),
     'conteudos_servicos' => $this->input->post('conteudos_servicos'),
     'formandos_servicos' => $this->input->post('formandos_servicos'),

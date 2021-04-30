@@ -25,34 +25,37 @@ $segment_3 = $this->uri->segment(3);
                 <table class="table table-striped" id="index_servicos">
                     <thead>
                     <tr>
-                        <th>(ID) Relatório de Controle</th>
-                        <th>Empresa</th>
-                        <th>Funcionário</th>
-                        <!--<th>Infracções</th>-->
-                        <th>Data da Análise</th>
-                        <th>Relatório</th>
+                        <th>ID</th>
+                        <th>Datas de Relatórios</th>
+                        <th>Empresas</th>
+                        <th>Motoristas Pesados</th>
+                        <th>Data de Análise</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php foreach( $results as $data ) {?>
                         <tr>
                             <td><a target="_blank" href="<?php echo site_url('discos/edit/'.$data->id); ?>"><?php echo $data->id; ?></a></td>
-                            <td><a target="_blank" href="<?php echo site_url('discos/edit/'.$data->id); ?>"><?php echo $data->title; ?></a></td>
-                            <td><a target="_blank" href="<?php echo site_url('discos/edit/'.$data->id); ?>"><?php echo $data->nome_funcionario_servicos; ?></a></td>
-                            <!--<td><a target="_blank" href="<?php //echo site_url('discos/edit/'.$data->id); ?>"><?php //echo $data->area_servicos; ?></a></td>-->
-                            <td><a target="_blank" href="<?php echo site_url('discos/edit/'.$data->id); ?>"><?php echo $data->data_servicos; ?></a></td>
-                            <td><a target="_blank" class="btn btn-primary ml-4" href="<?php echo site_url(); ?>/<?php echo 'discos'; ?>/pdf/<?php echo $data->id; ?>" >PDF</a></td>
+                            <td><a target="_blank" href="<?php echo site_url('discos/edit/'.$data->id); ?>"><?php echo $data->periodo_analise; ?></a></td>
+                            <td><a target="_blank" href="<?php echo site_url('discos/edit/'.$data->id); ?>"><?php echo $data->numero_empresas; ?></a></td>
+                            <td><a target="_blank" href="<?php echo site_url('discos/edit/'.$data->id); ?>"><?php echo $data->numero_empresas; ?></a></td>
+                            <td><a target="_blank" href="<?php echo site_url('discos/edit/'.$data->id); ?>"><?php echo $data->data_analise; ?></a></td>
+                            <td><a target="_blank" class="btn btn-primary ml-4" href="<?php echo site_url(); ?>/<?php echo 'discos'; ?>/pdf/<?php echo $data->id; ?>" >Editar Relatórios</a></td>
+                            <td><a target="_blank" class="btn btn-primary ml-4" href="<?php echo site_url(); ?>/<?php echo 'discos'; ?>/pdf/<?php echo $data->id; ?>" >Criar Relatórios</a></td>
                         </tr>
                     <?php } ?>
                     </tbody>
                     <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>Empresa</th>
-                        <th>Funcionário</th>
-                        <th>Formação</th>
-                        <!--<th>Data</th>-->
-                        <th style="display: none;">Relatório</th>
+                        <th>Datas de Relatórios</th>
+                        <th>Empresas</th>
+                        <th>Motoristas Pesados</th>
+                        <th>Data de Análise</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                     </tfoot>
                 </table>
