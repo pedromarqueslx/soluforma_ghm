@@ -11,7 +11,7 @@ echo form_open('relatorios/create');
                 <h1>Abrir Relatório Mensal</h1>
             </div>
             <div class="col-12 col-md-6 text-right">
-                <a class="btn btn-primary" href="<?php echo base_url("/index.php/users/account/"); ?>" >Cancelar</a>
+                <a class="btn btn-primary" href="<?php echo base_url("/index.php/relatorios/"); ?>" >Cancelar</a>
                 <button class="btn btn-success mx-auto">Guardar</button>
             </div>
         </div>

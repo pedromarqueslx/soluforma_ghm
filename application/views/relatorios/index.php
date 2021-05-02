@@ -37,13 +37,13 @@ $segment_3 = $this->uri->segment(3);
                     <tbody>
                     <?php foreach( $results as $data ) {?>
                         <tr>
-                            <td><a target="_blank" href="<?php echo site_url('discos/edit/'.$data->id); ?>"><?php echo $data->id; ?></a></td>
-                            <td><a target="_blank" href="<?php echo site_url('discos/edit/'.$data->id); ?>"><?php echo $data->periodo_analise; ?></a></td>
-                            <td><a target="_blank" href="<?php echo site_url('discos/edit/'.$data->id); ?>"><?php echo $data->numero_empresas; ?></a></td>
-                            <td><a target="_blank" href="<?php echo site_url('discos/edit/'.$data->id); ?>"><?php echo $data->numero_empresas; ?></a></td>
-                            <td><a target="_blank" href="<?php echo site_url('discos/edit/'.$data->id); ?>"><?php echo $data->data_analise; ?></a></td>
-                            <td><a target="_blank" class="btn btn-primary ml-4" href="<?php echo site_url(); ?>/<?php echo 'discos'; ?>/pdf/<?php echo $data->id; ?>" >Editar Relatórios</a></td>
-                            <td><a target="_blank" class="btn btn-primary ml-4" href="<?php echo site_url(); ?>/<?php echo 'discos'; ?>/pdf/<?php echo $data->id; ?>" >Criar Relatórios</a></td>
+                            <td><a target="_blank" href="<?php echo site_url('relatorios/editreport/'.$data->id); ?>"><?php echo $data->id; ?></a></td>
+                            <td><a target="_blank" href="<?php echo site_url('relatorios/editreport/'.$data->id); ?>"><?php echo $data->periodo_analise; ?></a></td>
+                            <td><a target="_blank" href="<?php echo site_url('relatorios/editreport/'.$data->id); ?>"><?php echo $data->title; ?></a></td>
+                            <td><a target="_blank" href="<?php echo site_url('relatorios/editreport/'.$data->id); ?>"><?php echo $data->numero_empresas; ?></a></td>
+                            <td><a target="_blank" href="<?php echo site_url('relatorios/editreport/'.$data->id); ?>"><?php echo $data->data_analise; ?></a></td>
+                            <td><a target="_blank" class="btn btn-primary ml-4" href="<?php echo site_url(); ?>/relatorios/editreport/<?php echo $data->id; ?>" >Editar Relatórios</a></td>
+                            <td><a target="_blank" class="btn btn-primary ml-4" href="<?php echo site_url(); ?>/relatorios/createreport/<?php echo $data->id; ?>" >Criar Relatórios</a></td>
                         </tr>
                     <?php } ?>
                     </tbody>
