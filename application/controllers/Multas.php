@@ -183,7 +183,6 @@ class Multas extends CI_Controller {
                 //$this->load->view('multas/success');
                 redirect( base_url() . 'index.php/multas');
             }
-
         }else{
             // if user is NOT loggedIn redirect to homepage
             redirect( base_url() );

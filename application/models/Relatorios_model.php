@@ -141,6 +141,47 @@ class Relatorios_model extends CI_Model {
         }
     }
 
+
+    public function set_relatorios_infraccoes($data) {
+        $this->load->helper('url');
+        $index = $this->input->post('index');
+        $title = $this->input->post('title');
+        $n_empresa = $this->input->post('n_empresa');
+        /*
+        echo '<pre>';
+        var_dump($title);
+        var_dump($n_empresa);
+        echo '</pre>';
+        */
+        $data = array();
+        //for($i = 0; $i < count($title); $i++ ) {
+        foreach($index as $selected) {
+            $data[] = array(
+                //'periodo_analise' => $this->input->post('periodo_analise'),
+                //'data_analise' => $this->input->post('data_analise'),
+                //'lblDataExtenso' => $this->input->post('lblDataExtenso'),
+                'categoria_servicos' => $this->input->post('categoria_servicos'),
+                'visivel_servicos' => $this->input->post('visivel_servicos'),
+                'utilizador_servicos' => $this->input->post('utilizador_servicos'),
+                'criado_servicos' => $this->input->post('criado_servicos'),
+                'modificado_servicos' => $this->input->post('modificado_servicos'),
+                //'index' => $selected,
+                'title' => $title[$selected],
+                'n_empresa' => $n_empresa[$selected],
+                'numero_empresas' => count($index),
+            );
+        }
+
+        if ($data > 0) {
+            return $this->db->insert_batch('relatorios_infraccoes', $data);
+            /*          echo '<pre>';
+                        print_r($data);
+                        die();
+                        echo '</pre>';*/
+        }
+    }
+
+
     public function set_servicos_id($id = 0) {
         $this->load->helper('url');
         $slug = url_title($this->input->post('title'), 'dash', TRUE);
@@ -281,6 +322,34 @@ class Relatorios_model extends CI_Model {
         $q = $this->db->get('infracoes');
         $response = $q->result_array();
         return $response;
+    }
+
+    public function get_relatorios_by_id($id = 0)
+    {
+        if ($id === 0)
+        {
+            $query = $this->db->get('relatorios');
+            return $query->result_array();
+        }
+        $query = $this->db->get_where('relatorios', array('id' => $id));
+        return $query->row_array();
+    }
+
+    public function get_funcionarios_by_id($id = 0)
+    {
+        $test = $relatorios['n_empresa'];
+        //$where = "cargo='Motorista Pesados' AND n_cliente !='Saiu'";
+        //$where = "cargo='Motorista Pesados' AND n_cliente = 6";
+
+        //$this->db->distinct();
+        $this->db->select('title');
+        $this->db->select('data_nascimento');
+        $this->db->select('nacionalidade');
+        $this->db->select('n_cliente');
+        //$query = $this->db->where($where)->get("funcionarios");
+        $query = $this->db->get_where('funcionarios', array('n_cliente' => 6));
+
+        return $query->result_array();
     }
 }
 

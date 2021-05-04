@@ -143,12 +143,18 @@ class Relatorios extends CI_Controller {
         if ($this->session->userdata('isUserLoggedIn')) {
             // Go to user model getRows
             $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
+
+            $id = $this->uri->segment(3);
+
             $data['empresas'] = $this->relatorios_model->get_funcionarios();
+            $data['relatorios'] = $this->relatorios_model->get_relatorios_by_id($id);
+            $data['motoristas'] = $this->relatorios_model->get_funcionarios_by_id($id);
+
             $data['login_date'] = $this->user->login_date();
 
             //form validation
-            $this->form_validation->set_rules('periodo_analise', 'Período de Análise Mensal', 'required');
-            $this->form_validation->set_rules('data_analise', 'Data da Formação', 'required');
+            //$this->form_validation->set_rules('periodo_analise', 'Período de Análise Mensal', 'required');
+            //$this->form_validation->set_rules('data_analise', 'Data da Formação', 'required');
             $this->form_validation->set_rules('title[]', 'Empresa', 'required');
             $this->form_validation->set_rules('index[]', 'Empresa', 'required');
 
@@ -157,7 +163,7 @@ class Relatorios extends CI_Controller {
                 $this->load->view('relatorios/createreport');
                 $this->load->view('templates/footer');
             } else {
-                $this->relatorios_model->set_relatorios($data);
+                $this->relatorios_model->set_relatorios_infraccoes($id);
                 redirect( base_url() . 'index.php/relatorios/index/');
             }
         } else {

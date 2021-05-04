@@ -19,11 +19,13 @@ echo form_open('relatorios/create');
 </div>
 
 <div class="container">
+    <!--
     <div class="row">
+
         <div class="col-md-4">
             <label for="analiseMensal">Período de Análise Mensal *</label>
             <input type="date" class="form-control" id="analiseMensal" name="periodo_analise" value="">
-            <div class="small"><?php echo form_error('periodo_analise'); ?></div>
+            <div class="small"><?php /*echo form_error('periodo_analise'); */?></div>
         </div>
 
         <div class="col-md-4">
@@ -32,13 +34,16 @@ echo form_open('relatorios/create');
                 <div class="control">
                     <input type="date" class="form-control" id="datepicker" name="data_analise" value="" placeholder="Ano-Mês-Dia" onchange="formatar()" required>
                     <input type="hidden" class="form-control" id="lblDataExtenso" name="lblDataExtenso" value="">
-                    <div class="small"><?php echo form_error('data_analise'); ?></div>
+                    <div class="small"><?php /*echo form_error('data_analise'); */?></div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <h2 class="mt-4">Seleccionar Empresas para Emissão de Relatórios</h2>
+    </div>
+    -->
+
+    <h2 class="mt-4"><?php echo $relatorios['title']; ?></h2>
+    <p><?php echo $relatorios['n_empresa']; ?></p>
 
     <hr>
 
@@ -56,25 +61,26 @@ echo form_open('relatorios/create');
             <div class="custom-control custom-checkbox">
                 <div class="small"><?php echo form_error('index[]'); ?></div>
                 <input type="checkbox" class="custom-control-input" id="selectAllCheckBox" onClick="toggle(this)" >
-                <label class="custom-control-label text-dark" for="selectAllCheckBox">Seleccionar todas as Empresas com Motoristas de Pesados</label>
+                <label class="custom-control-label text-dark" for="selectAllCheckBox">Seleccionar todos os Motoristas de pesados</label>
             </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-4">
-<!--<div class="form-check">-->
             <div class="">
             <?php
             $i = -1;
-            foreach($empresas as $empresa) {
+            foreach($motoristas as $motorista) {
                 $i ++;
                 ?>
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" id="customCheck<?php echo $i ?>" name="index[]" value="<?php echo $i; ?>" class="custom-control-input" >
-                    <label class="custom-control-label" for="customCheck<?php echo $i ?>"><?php echo $empresa['empresa']; ?></label>
-                    <input type="hidden" name="n_empresa[]" id="selectText<?php echo $i ?>" value="<?php echo $empresa['n_cliente']; ?>" >
-                    <input type="hidden" name="title[]" id="selectCheckBox<?php echo $i ?>" value="<?php echo $empresa['empresa']; ?>" >
+                    <label class="custom-control-label" for="customCheck<?php echo $i ?>"><?php echo $motorista['title']; ?></label>
+                    <input type="hidden" name="n_empresa[]" id="selectText<?php echo $i ?>" value="<?php echo $motorista['data_nascimento']; ?>" >
+                    <input type="hidden" name="title[]" id="selectCheckBox<?php echo $i ?>" value="<?php echo $motorista['nacionalidade']; ?>" >
+                    <input type="" name="title[]" id="selectCheckBox<?php echo $i ?>" value="<?php echo $motorista['n_cliente']; ?>" >
+
                 </div>
                 <?php
             }
